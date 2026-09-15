@@ -1,0 +1,5 @@
+2026-09-09 09:50:31,490 - root - INFO - Moved data.csv to Data Files
+2026-09-09 09:50:31,490 - root - INFO - Moved log.txt to Documents
+2026-09-09 09:50:31,491 - root - INFO - Moved pip.py to Python Files
+2026-09-09 09:50:31,491 - root - INFO - Moved try.jpg to Images
+2026-09-09 09:50:31,491 - root - INFO - Moved hello.docx to Documents
