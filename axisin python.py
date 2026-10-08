@@ -1,0 +1,15 @@
+import numpy as np
+marks = np.array([40, 50, 60, 70, 80])
+print("Marks:")
+print(marks)
+print("\nMarks greater than 60:")
+print(marks[marks > 60])
+
+print("\nMarks less than 60:")
+print(marks[marks < 60])
+print("\nMarks greater than or equal to 60:")
+print(marks[marks >= 60])
+print("\nMarks equal to 60:")
+print(marks[marks == 60])
+print("\nMarks not equal to 60:")
+print(marks[marks != 60])
