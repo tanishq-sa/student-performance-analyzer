@@ -1,0 +1,4309 @@
+================================================================================
+ALL PYTHON SOURCE CODE COMPILATION
+Root Directory: /Users/dazzelr/PycharmProjects
+Total Files Included: 44
+================================================================================
+
+TABLE OF CONTENTS
+--------------------------------------------------------------------------------
+
+PART 1: Python Lab Programs (Python_Lab_Programs/) [17 files]
+  [01] Python_Lab_Programs/01_OOP_Concepts.py (93 lines, 2,356 bytes)
+  [02] Python_Lab_Programs/02_User_Defined_Exception_Handling.py (115 lines, 3,548 bytes)
+  [03] Python_Lab_Programs/03_Login_Registration_Validation_PyQt.py (74 lines, 2,150 bytes)
+  [04] Python_Lab_Programs/04_GUI_Input_Validation_PyQt.py (83 lines, 2,876 bytes)
+  [05] Python_Lab_Programs/05_Fetching_Processing_Data_API.py (31 lines, 876 bytes)
+  [06] Python_Lab_Programs/06_File_Organization_Logging.py (41 lines, 957 bytes)
+  [07] Python_Lab_Programs/07_Handling_Network_Errors_API.py (92 lines, 2,803 bytes)
+  [08] Python_Lab_Programs/08_Student_Registration_Streamlit.py (35 lines, 1,212 bytes)
+  [09] Python_Lab_Programs/09_Data_Analytics_Streamlit.py (292 lines, 7,995 bytes)
+  [10] Python_Lab_Programs/10_Multi_Route_Flask.py (37 lines, 662 bytes)
+  [11] Python_Lab_Programs/11_Flask_Application_Deployment.py (127 lines, 3,051 bytes)
+  [12] Python_Lab_Programs/12_File_Read_Write_Operations.py (119 lines, 3,075 bytes)
+  [13] Python_Lab_Programs/13_Statistical_Analysis_Pandas.py (44 lines, 1,075 bytes)
+  [14] Python_Lab_Programs/14_Apply_Function_Student_Dataset.py (117 lines, 2,537 bytes)
+  [15] Python_Lab_Programs/15_DataFrame_Operations.py (103 lines, 3,154 bytes)
+  [16] Python_Lab_Programs/16_CSV_Create_Load.py (80 lines, 2,044 bytes)
+  [17] Python_Lab_Programs/17_CSV_Attendance_Bonus_Average.py (84 lines, 2,575 bytes)
+
+PART 2: Root Directory Programs [24 files]
+  [18] APiSerach.py (13 lines, 401 bytes)
+  [19] DataReadCSVOperation.py (15 lines, 248 bytes)
+  [20] FIleOrganiser.py (37 lines, 889 bytes)
+  [21] FancyIndexing.py (34 lines, 659 bytes)
+  [22] Gemini.py (290 lines, 6,850 bytes)
+  [23] RestAPI.py (16 lines, 298 bytes)
+  [24] Unit1-Lab2-LoginRegistratinFroms.py (79 lines, 2,169 bytes)
+  [25] Unit1-Lab3-ValidateTheResult.py (83 lines, 2,951 bytes)
+  [26] UserInfo.py (21 lines, 711 bytes)
+  [27] axisin python.py (15 lines, 390 bytes)
+  [28] betterErrorHandling.py (13 lines, 345 bytes)
+  [29] boolcompleteprogram.py (61 lines, 1,491 bytes)
+  [30] booleanOps.py (10 lines, 154 bytes)
+  [31] build_notebook.py (590 lines, 26,278 bytes)
+  [32] compare.py (17 lines, 425 bytes)
+  [33] first_app.py (18 lines, 579 bytes)
+  [34] flasktry.py (37 lines, 641 bytes)
+  [35] input.py (26 lines, 1,059 bytes)
+  [36] numpaycsv.py (10 lines, 197 bytes)
+  [37] numpysolve.py (22 lines, 403 bytes)
+  [38] pandscheck.py (19 lines, 464 bytes)
+  [39] readcsv.py (32 lines, 516 bytes)
+  [40] sorting.py (7 lines, 135 bytes)
+  [41] xmltree.py (20 lines, 446 bytes)
+
+PART 3: Subdirectory Programs (Streamlit & TestFile) [3 files]
+  [42] Streamlit/CreateData.py (233 lines, 5,322 bytes)
+  [43] Streamlit/better.py (595 lines, 11,207 bytes)
+  [44] TestFile/Python Files/pip.py (0 lines, 0 bytes)
+
+================================================================================
+
+
+################################################################################
+# PART 1: Python Lab Programs (Python_Lab_Programs/)
+################################################################################
+
+================================================================================
+FILE [01/44]: Python_Lab_Programs/01_OOP_Concepts.py
+Full Path : /Users/dazzelr/PycharmProjects/Python_Lab_Programs/01_OOP_Concepts.py
+Stats     : 93 lines | 2,356 bytes
+--------------------------------------------------------------------------------
+from abc import ABC, abstractmethod
+
+
+class Person(ABC):
+
+    def __init__(self, name, age):
+        self._name = name
+        self.__age = age
+
+    def get_age(self):
+        return self.__age
+
+    def set_age(self, age):
+        if age > 0:
+            self.__age = age
+        else:
+            print("Age must be positive.")
+
+    @abstractmethod
+    def display_role(self):
+        pass
+
+    def display_info(self):
+        print(f"Name: {self._name}, Age: {self.__age}")
+
+
+class Student(Person):
+
+    def __init__(self, name, age, student_id, course):
+        super().__init__(name, age)
+        self.student_id = student_id
+        self.course = course
+
+    def display_role(self):
+        print(f"{self._name} is a Student (ID: {self.student_id}, Course: {self.course})")
+
+    def display_info(self):
+        super().display_info()
+        print(f"Student ID: {self.student_id}, Course: {self.course}")
+
+
+class Teacher(Person):
+
+    def __init__(self, name, age, subject, experience):
+        super().__init__(name, age)
+        self.subject = subject
+        self.experience = experience
+
+    def display_role(self):
+        print(f"{self._name} is a Teacher (Subject: {self.subject}, Experience: {self.experience} years)")
+
+    def display_info(self):
+        super().display_info()
+        print(f"Subject: {self.subject}, Experience: {self.experience} years")
+
+
+def show_role(person):
+    person.display_role()
+
+
+if __name__ == "__main__":
+
+    print("=" * 50)
+    print("  Object Oriented Programming Concepts Demo")
+    print("=" * 50)
+
+    student1 = Student("Tanishq", 20, "BCA2024001", "BCA")
+    student2 = Student("Nishita", 21, "BCA2024002", "BCA")
+    teacher1 = Teacher("Dr. Sharma", 45, "Python", 15)
+
+    print("\n--- Student 1 Info ---")
+    student1.display_info()
+
+    print("\n--- Student 2 Info ---")
+    student2.display_info()
+
+    print("\n--- Teacher Info ---")
+    teacher1.display_info()
+
+    print("\n--- Polymorphism Demo ---")
+    people = [student1, student2, teacher1]
+    for person in people:
+        show_role(person)
+
+    print("\n--- Encapsulation Demo ---")
+    print(f"Student1 Age (via getter): {student1.get_age()}")
+    student1.set_age(21)
+    print(f"Student1 Age (after setter): {student1.get_age()}")
+    student1.set_age(-5)
+
+    print("\n" + "=" * 50)
+    print("  Demo Complete")
+    print("=" * 50)
+================================================================================
+
+
+================================================================================
+FILE [02/44]: Python_Lab_Programs/02_User_Defined_Exception_Handling.py
+Full Path : /Users/dazzelr/PycharmProjects/Python_Lab_Programs/02_User_Defined_Exception_Handling.py
+Stats     : 115 lines | 3,548 bytes
+--------------------------------------------------------------------------------
+class InvalidAgeError(Exception):
+
+    def __init__(self, age, message="Age must be between 1 and 120"):
+        self.age = age
+        self.message = message
+        super().__init__(self.message)
+
+    def __str__(self):
+        return f"InvalidAgeError: {self.age} -> {self.message}"
+
+
+class InvalidMarksError(Exception):
+
+    def __init__(self, marks, message="Marks must be between 0 and 100"):
+        self.marks = marks
+        self.message = message
+        super().__init__(self.message)
+
+    def __str__(self):
+        return f"InvalidMarksError: {self.marks} -> {self.message}"
+
+
+class WeakPasswordError(Exception):
+
+    def __init__(self, message="Password is too weak"):
+        self.message = message
+        super().__init__(self.message)
+
+    def __str__(self):
+        return f"WeakPasswordError: {self.message}"
+
+
+def validate_age(age):
+    if not isinstance(age, int):
+        raise TypeError("Age must be an integer")
+    if age < 1 or age > 120:
+        raise InvalidAgeError(age)
+    return True
+
+
+def validate_marks(marks):
+    if not isinstance(marks, (int, float)):
+        raise TypeError("Marks must be a number")
+    if marks < 0 or marks > 100:
+        raise InvalidMarksError(marks)
+    return True
+
+
+def validate_password(password):
+    if len(password) < 8:
+        raise WeakPasswordError("Password must be at least 8 characters long")
+    if not any(c.isupper() for c in password):
+        raise WeakPasswordError("Password must contain at least 1 uppercase letter")
+    if not any(c.islower() for c in password):
+        raise WeakPasswordError("Password must contain at least 1 lowercase letter")
+    if not any(c.isdigit() for c in password):
+        raise WeakPasswordError("Password must contain at least 1 digit")
+    if not any(c in '@$!%*?&' for c in password):
+        raise WeakPasswordError("Password must contain at least 1 special character (@$!%*?&)")
+    return True
+
+
+if __name__ == "__main__":
+
+    print("=" * 50)
+    print("  User-Defined Exception Handling Demo")
+    print("=" * 50)
+
+    print("\n--- Test 1: Age Validation ---")
+    test_ages = [20, -5, 150, "abc"]
+    for age in test_ages:
+        try:
+            validate_age(age)
+            print(f"  Age {age}: Valid")
+        except InvalidAgeError as e:
+            print(f"  {e}")
+        except TypeError as e:
+            print(f"  TypeError: {e}")
+
+    print("\n--- Test 2: Marks Validation ---")
+    test_marks = [85, -10, 110, 100, 0]
+    for marks in test_marks:
+        try:
+            validate_marks(marks)
+            print(f"  Marks {marks}: Valid")
+        except InvalidMarksError as e:
+            print(f"  {e}")
+        except TypeError as e:
+            print(f"  TypeError: {e}")
+
+    print("\n--- Test 3: Password Validation ---")
+    test_passwords = ["abc", "abcdefgh", "Abcdefgh", "Abcdefg1", "Admin@147"]
+    for pwd in test_passwords:
+        try:
+            validate_password(pwd)
+            print(f"  Password '{pwd}': Valid")
+        except WeakPasswordError as e:
+            print(f"  Password '{pwd}': {e}")
+
+    print("\n--- Test 4: try-except-else-finally Block ---")
+    try:
+        age = int(input("  Enter your age: "))
+        validate_age(age)
+    except ValueError:
+        print("  Error: Please enter a valid integer.")
+    except InvalidAgeError as e:
+        print(f"  {e}")
+    else:
+        print(f"  Age {age} is valid! Registration successful.")
+    finally:
+        print("  Validation process complete.")
+
+    print("\n" + "=" * 50)
+    print("  Demo Complete")
+    print("=" * 50)
+================================================================================
+
+
+================================================================================
+FILE [03/44]: Python_Lab_Programs/03_Login_Registration_Validation_PyQt.py
+Full Path : /Users/dazzelr/PycharmProjects/Python_Lab_Programs/03_Login_Registration_Validation_PyQt.py
+Stats     : 74 lines | 2,150 bytes
+--------------------------------------------------------------------------------
+import sys
+import re
+from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QLineEdit, QPushButton, QMessageBox
+
+app = QApplication(sys.argv)
+window = QMainWindow()
+
+username = "admin"
+password = "Admin@147"
+
+
+def check_login():
+    entered_user = qlineEdit.text()
+    entered_pass = qlineEdit1.text()
+    patternForPassword = r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+
+    msg = QMessageBox(window)
+
+    if re.fullmatch(patternForPassword, entered_pass):
+        if entered_user == username and entered_pass == password:
+            msg.setIcon(QMessageBox.Icon.Information)
+            msg.setText("Login Successful!")
+            msg.setWindowTitle("Success")
+        else:
+            msg.setIcon(QMessageBox.Icon.Critical)
+            msg.setText("Invalid Username or Password")
+            msg.setWindowTitle("Error")
+    else:
+        msg.setIcon(QMessageBox.Icon.Warning)
+        msg.setWindowTitle("Weak Password")
+        msg.setText(
+            "Password must be at least 8 characters long.\n"
+            "It must contain at least 1 lowercase letter, 1 uppercase letter, "
+            "1 digit, and 1 special character (@$!%*?&)."
+        )
+        msg.exec()
+        return
+    msg.exec()
+
+
+window.setWindowTitle("Login Registration Forms")
+window.setGeometry(720, 720, 600, 400)
+
+qLabel = QLabel(window)
+qLabel.setText("Username")
+qLabel.setStyleSheet("color: rgb(255, 255, 255);")
+qLabel.setGeometry(50, 50, 60, 30)
+qLabel.show()
+
+qlineEdit = QLineEdit(window)
+qlineEdit.setText("")
+qlineEdit.setStyleSheet("color: rgb(255, 255, 255);")
+qlineEdit.setGeometry(150, 50, 80, 30)
+
+qLabel = QLabel(window)
+qLabel.setText("Password")
+qLabel.setStyleSheet("color: rgb(255, 255, 255);")
+qLabel.setGeometry(50, 100, 60, 30)
+qLabel.show()
+
+qlineEdit1 = QLineEdit(window)
+qlineEdit1.setText("")
+qlineEdit1.setStyleSheet("color: rgb(255, 255, 255);")
+qlineEdit1.setGeometry(150, 100, 80, 30)
+
+button = QPushButton(window)
+button.setText("Login")
+button.setStyleSheet("color: rgb(255, 255, 255);")
+button.setGeometry(100, 150, 80, 30)
+
+button.clicked.connect(check_login)
+
+window.show()
+sys.exit(app.exec_())
+================================================================================
+
+
+================================================================================
+FILE [04/44]: Python_Lab_Programs/04_GUI_Input_Validation_PyQt.py
+Full Path : /Users/dazzelr/PycharmProjects/Python_Lab_Programs/04_GUI_Input_Validation_PyQt.py
+Stats     : 83 lines | 2,876 bytes
+--------------------------------------------------------------------------------
+import sys
+import re
+from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QLineEdit, QPushButton, QMessageBox
+from PyQt5.QtCore import Qt
+
+
+class LoginWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+
+        self.email = "admin@admin.com"
+        self.password = "Admin@147"
+
+        self.init_ui()
+
+    def init_ui(self):
+        self.setWindowTitle("Login Registration Form")
+        self.setGeometry(720, 200, 600, 400)
+
+        self.qLabelEmail = QLabel("Email", self)
+        self.qLabelEmail.setGeometry(50, 50, 100, 30)
+
+        self.qlineEdit = QLineEdit(self)
+        self.qlineEdit.setGeometry(150, 50, 120, 30)
+
+        self.qLabelPass = QLabel("Password", self)
+        self.qLabelPass.setGeometry(50, 100, 100, 30)
+
+        self.qlineEdit1 = QLineEdit(self)
+        self.qlineEdit1.setEchoMode(QLineEdit.EchoMode.Password)
+        self.qlineEdit1.setGeometry(150, 100, 120, 30)
+
+        self.button = QPushButton("Login", self)
+        self.button.setGeometry(100, 150, 80, 30)
+        self.button.clicked.connect(self.check_login)
+
+    def keyPressEvent(self, event):
+        if event.key() == Qt.Key_Escape:
+            self.close()
+        else:
+            super().keyPressEvent(event)
+
+    def check_login(self):
+        entered_user = self.qlineEdit.text()
+        entered_pass = self.qlineEdit1.text()
+        patternForPassword = r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+        validEmail = r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+
+        msg = QMessageBox(self)
+
+        if re.fullmatch(validEmail, entered_user):
+            if re.fullmatch(patternForPassword, entered_pass):
+                if entered_user == self.email and entered_pass == self.password:
+                    msg.setIcon(QMessageBox.Icon.Information)
+                    msg.setText("Login Successful!")
+                    msg.setWindowTitle("Success")
+                else:
+                    msg.setIcon(QMessageBox.Icon.Critical)
+                    msg.setText("Invalid Username or Password")
+                    msg.setWindowTitle("Error")
+            else:
+                msg.setIcon(QMessageBox.Icon.Warning)
+                msg.setWindowTitle("Weak Password")
+                msg.setText(
+                    "Password must be at least 8 characters long.\n"
+                    "It must contain at least 1 lowercase letter, 1 uppercase letter, "
+                    "1 digit, and 1 special character (@$!%*?&)."
+                )
+                msg.exec_()
+                return
+        else:
+            msg.setIcon(QMessageBox.Icon.Warning)
+            msg.setWindowTitle("Invalid Email")
+            msg.setText("Invalid Email Format")
+
+        msg.exec_()
+
+
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    window = LoginWindow()
+    window.show()
+    sys.exit(app.exec_())
+================================================================================
+
+
+================================================================================
+FILE [05/44]: Python_Lab_Programs/05_Fetching_Processing_Data_API.py
+Full Path : /Users/dazzelr/PycharmProjects/Python_Lab_Programs/05_Fetching_Processing_Data_API.py
+Stats     : 31 lines | 876 bytes
+--------------------------------------------------------------------------------
+import requests
+
+url = "https://jsonplaceholder.typicode.com/users"
+response = requests.get(url)
+
+if response.status_code == 200:
+    users = response.json()
+    print("Total Users:", len(users))
+    print()
+
+    for user in users:
+        print(f"Name: {user['name']}")
+        print(f"Email: {user['email']}")
+        print(f"Phone: {user['phone']}")
+        print(f"City: {user['address']['city']}")
+        print(f"Company: {user['company']['name']}")
+        print("-" * 40)
+
+    print()
+    search = input("Enter City Name to Search: ")
+    found = False
+    for user in users:
+        if user['address']['city'].lower() == search.lower():
+            print(f"Name: {user['name']}")
+            print(f"Email: {user['email']}")
+            found = True
+
+    if not found:
+        print("No user found in that city.")
+else:
+    print("Error Code:", response.status_code)
+================================================================================
+
+
+================================================================================
+FILE [06/44]: Python_Lab_Programs/06_File_Organization_Logging.py
+Full Path : /Users/dazzelr/PycharmProjects/Python_Lab_Programs/06_File_Organization_Logging.py
+Stats     : 41 lines | 957 bytes
+--------------------------------------------------------------------------------
+import os
+import logging
+from shutil import move
+
+folderPath = 'TestFile'
+
+logging.basicConfig(
+    filename=os.path.join(folderPath, 'log.txt'),
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
+
+folder = {
+    '.pdf': "PDF",
+    '.png': "Images",
+    '.jpg': "Images",
+    ".docx": "Documents",
+    ".txt": "Documents",
+    ".py": "Python Files",
+    ".csv": "Data Files",
+}
+
+files = os.listdir(folderPath)
+
+for file in files:
+    name, extension = os.path.splitext(file)
+    if extension in folder:
+        folderName = folder[extension]
+        destination = os.path.join(folderPath, folderName)
+
+        if not os.path.exists(destination):
+            os.makedirs(destination)
+
+        move(
+            os.path.join(folderPath, file),
+            os.path.join(destination, file)
+        )
+
+        logging.info(f"Moved {file} to {folderName}")
+
+print("File organization complete. Check log.txt for details.")
+================================================================================
+
+
+================================================================================
+FILE [07/44]: Python_Lab_Programs/07_Handling_Network_Errors_API.py
+Full Path : /Users/dazzelr/PycharmProjects/Python_Lab_Programs/07_Handling_Network_Errors_API.py
+Stats     : 92 lines | 2,803 bytes
+--------------------------------------------------------------------------------
+import requests
+
+
+def fetch_user_data(user_id):
+    url = f"https://jsonplaceholder.typicode.com/users/{user_id}"
+    try:
+        response = requests.get(url, timeout=10)
+        response.raise_for_status()
+
+        data = response.json()
+
+        if not data:
+            print("User Not Found")
+            return
+
+        print("\n--User Info--")
+        print("Name:", data['name'])
+        print("Email:", data['email'])
+        print("Phone:", data['phone'])
+        print("City:", data['address']['city'])
+        print("Company:", data['company']['name'])
+
+    except requests.exceptions.ConnectionError:
+        print("Network Error: Unable to connect to the server.")
+        print("Please check your internet connection.")
+
+    except requests.exceptions.Timeout:
+        print("Timeout Error: The server took too long to respond.")
+        print("Please try again later.")
+
+    except requests.exceptions.HTTPError as e:
+        print(f"HTTP Error: {e.response.status_code}")
+        if e.response.status_code == 404:
+            print("User not found.")
+        elif e.response.status_code == 500:
+            print("Server error. Please try again later.")
+        else:
+            print(f"Unexpected HTTP error: {e}")
+
+    except requests.exceptions.RequestException as e:
+        print(f"Request Error: {e}")
+
+    except Exception as e:
+        print(f"Unexpected Error: {e}")
+
+
+def fetch_all_users():
+    url = "https://jsonplaceholder.typicode.com/users"
+    try:
+        response = requests.get(url, timeout=10)
+        response.raise_for_status()
+
+        users = response.json()
+        print(f"\nTotal Users: {len(users)}\n")
+        for user in users:
+            print(f"{user['name']} - {user['email']}")
+
+    except requests.exceptions.ConnectionError:
+        print("Network Error: Unable to connect to the server.")
+
+    except requests.exceptions.Timeout:
+        print("Timeout Error: The server took too long to respond.")
+
+    except requests.exceptions.HTTPError as e:
+        print(f"HTTP Error: {e.response.status_code}")
+
+    except requests.exceptions.RequestException as e:
+        print(f"Request Error: {e}")
+
+
+if __name__ == "__main__":
+
+    print("=" * 50)
+    print("  Handling Network Errors - Public API")
+    print("=" * 50)
+
+    print("\n--- Fetching All Users ---")
+    fetch_all_users()
+
+    print("\n--- Fetching Individual User ---")
+    userID = input("Enter User ID (1-10): ")
+    fetch_user_data(userID)
+
+    print("\n--- Testing Invalid URL ---")
+    try:
+        response = requests.get("https://invalid-url-test.example.com", timeout=5)
+    except requests.exceptions.ConnectionError:
+        print("Caught ConnectionError: Cannot reach invalid-url-test.example.com")
+
+    print("\n" + "=" * 50)
+    print("  Demo Complete")
+    print("=" * 50)
+================================================================================
+
+
+================================================================================
+FILE [08/44]: Python_Lab_Programs/08_Student_Registration_Streamlit.py
+Full Path : /Users/dazzelr/PycharmProjects/Python_Lab_Programs/08_Student_Registration_Streamlit.py
+Stats     : 35 lines | 1,212 bytes
+--------------------------------------------------------------------------------
+import streamlit as st
+from datetime import datetime
+
+st.title("Student Registration Form")
+
+name = st.text_input("Enter Student Name")
+age = st.number_input("Enter Age", min_value=1, max_value=100)
+course = st.text_input("Enter Course")
+year = st.date_input(
+    "Enter Year",
+    value=datetime.now(),
+    min_value=datetime(2020, 1, 1),
+    max_value=datetime.now()
+)
+email = st.text_input("Enter Email")
+gender = st.selectbox("Select Gender", ["Male", "Female", "Other"])
+skills = st.text_area("Enter Skills")
+confirmation = st.checkbox("I have read all the terms and privacy policy")
+
+button = st.button("Submit")
+
+if confirmation and button:
+    if name != '' and course != '' and email != '' and skills != '':
+        st.success("Registration Successful!")
+        st.info(f"Student Name: {name}")
+        st.info(f"Student Age: {age}")
+        st.info(f"Student Course: {course}")
+        st.info(f"Year: {year}")
+        st.info(f"Student Email: {email}")
+        st.info(f"Student Gender: {gender}")
+        st.info(f"Student Skills: {skills}")
+    else:
+        st.error("Please fill in all the fields.")
+elif button and not confirmation:
+    st.warning("Please accept the terms and privacy policy.")
+================================================================================
+
+
+================================================================================
+FILE [09/44]: Python_Lab_Programs/09_Data_Analytics_Streamlit.py
+Full Path : /Users/dazzelr/PycharmProjects/Python_Lab_Programs/09_Data_Analytics_Streamlit.py
+Stats     : 292 lines | 7,995 bytes
+--------------------------------------------------------------------------------
+import streamlit as st
+import pandas as pd
+import plotly.express as px
+
+st.set_page_config(
+    page_title="Student Performance Analyzer",
+    layout="wide"
+)
+
+st.title("Student Performance Analyzer")
+st.caption("Interactive student marks and performance analysis")
+
+with st.sidebar:
+
+    st.header("Upload Dataset")
+
+    uploaded_file = st.file_uploader(
+        "Upload CSV file",
+        type=["csv"]
+    )
+
+    st.divider()
+
+    st.write("Settings")
+
+    passing_marks = st.slider(
+        "Passing Marks",
+        min_value=0,
+        max_value=100,
+        value=40
+    )
+
+
+if uploaded_file is None:
+
+    st.info("Upload a CSV file from the sidebar to get started.")
+
+    st.markdown("""
+    ### Expected CSV format
+
+    Your CSV should look something like:
+
+    | Student | Math | Python | DBMS | AI |
+    |---|---:|---:|---:|---:|
+    | Rahul | 78 | 85 | 72 | 90 |
+    | Priya | 65 | 74 | 80 | 76 |
+    | Aman | 35 | 42 | 38 | 45 |
+    | Sneha | 92 | 89 | 95 | 91 |
+
+    **First column:** Student name
+    **Other numeric columns:** Subjects
+    """)
+
+    st.stop()
+
+
+try:
+    df = pd.read_csv(uploaded_file)
+except Exception as e:
+    st.error(f"Unable to read CSV: {e}")
+    st.stop()
+
+if df.empty:
+    st.error("The uploaded CSV is empty.")
+    st.stop()
+
+student_column = df.columns[0]
+
+subject_columns = df.select_dtypes(
+    include="number"
+).columns.tolist()
+
+if not subject_columns:
+    st.error("No numeric subject columns were found.")
+    st.stop()
+
+df["Average"] = df[subject_columns].mean(axis=1)
+df["Total"] = df[subject_columns].sum(axis=1)
+df["Passed Subjects"] = (df[subject_columns] >= passing_marks).sum(axis=1)
+df["Failed Subjects"] = (df[subject_columns] < passing_marks).sum(axis=1)
+df["Result"] = df["Failed Subjects"].apply(lambda x: "PASS" if x == 0 else "FAIL")
+df["Rank"] = df["Average"].rank(method="min", ascending=False).astype(int)
+
+st.subheader("Class Overview")
+
+col1, col2, col3, col4, col5 = st.columns(5)
+col1.metric("Students", len(df))
+col2.metric("Subjects", len(subject_columns))
+col3.metric("Class Average", f"{df['Average'].mean():.2f}")
+col4.metric("Passed", int((df["Result"] == "PASS").sum()))
+col5.metric("Failed", int((df["Result"] == "FAIL").sum()))
+
+tab1, tab2, tab3, tab4 = st.tabs([
+    "Dataset",
+    "Student Analysis",
+    "Subject Analysis",
+    "Class Comparison"
+])
+
+with tab1:
+
+    st.subheader("Dataset")
+
+    search = st.text_input(
+        "Search Student",
+        placeholder="Type a student name..."
+    )
+
+    filtered_df = df.copy()
+
+    if search:
+        filtered_df = filtered_df[
+            filtered_df[student_column]
+            .astype(str)
+            .str.contains(search, case=False, na=False)
+        ]
+
+    result_filter = st.multiselect(
+        "Filter by Result",
+        ["PASS", "FAIL"],
+        default=["PASS", "FAIL"]
+    )
+
+    if result_filter:
+        filtered_df = filtered_df[
+            filtered_df["Result"].isin(result_filter)
+        ]
+
+    st.dataframe(filtered_df, use_container_width=True, hide_index=True)
+    st.write(f"Showing {len(filtered_df)} students")
+
+    csv = df.to_csv(index=False)
+    st.download_button(
+        "Download Processed Dataset",
+        data=csv,
+        file_name="student_analysis.csv",
+        mime="text/csv"
+    )
+
+with tab2:
+
+    st.subheader("Individual Student Analysis")
+
+    selected_student = st.selectbox(
+        "Select Student",
+        df[student_column].tolist()
+    )
+
+    student = df[df[student_column] == selected_student].iloc[0]
+
+    col1, col2, col3, col4 = st.columns(4)
+    col1.metric("Average", f"{student['Average']:.2f}")
+    col2.metric("Total Marks", f"{student['Total']:.0f}")
+    col3.metric("Rank", f"#{student['Rank']}")
+    col4.metric("Result", student["Result"])
+
+    if student["Result"] == "PASS":
+        st.success(f"{selected_student} passed all subjects.")
+    else:
+        failed = [
+            subject for subject in subject_columns
+            if student[subject] < passing_marks
+        ]
+        st.error(f"{selected_student} failed in: " + ", ".join(failed))
+
+    st.write("### Individual Marks")
+
+    marks_df = pd.DataFrame({
+        "Subject": subject_columns,
+        "Marks": [student[subject] for subject in subject_columns]
+    })
+
+    st.dataframe(marks_df, use_container_width=True, hide_index=True)
+
+    st.write("### Performance")
+
+    fig = px.bar(
+        marks_df, x="Subject", y="Marks",
+        title=f"{selected_student}'s Subject Performance",
+        text="Marks"
+    )
+    fig.add_hline(y=passing_marks, line_dash="dash", annotation_text="Passing Marks")
+    fig.update_layout(yaxis_range=[0, 100])
+    st.plotly_chart(fig, use_container_width=True)
+
+    st.write("### Performance Profile")
+
+    radar = px.line_polar(
+        marks_df, r="Marks", theta="Subject",
+        line_close=True, range_r=[0, 100]
+    )
+    radar.update_traces(fill="toself")
+    st.plotly_chart(radar, use_container_width=True)
+
+with tab3:
+
+    st.subheader("Subject-wise Analysis")
+
+    selected_subject = st.selectbox(
+        "Select Subject",
+        subject_columns,
+        key="subject_selector"
+    )
+
+    subject_marks = df[selected_subject]
+
+    col1, col2, col3, col4 = st.columns(4)
+    col1.metric("Average", f"{subject_marks.mean():.2f}")
+    col2.metric("Highest", f"{subject_marks.max():.0f}")
+    col3.metric("Lowest", f"{subject_marks.min():.0f}")
+
+    pass_percentage = (subject_marks >= passing_marks).mean() * 100
+    col4.metric("Pass Percentage", f"{pass_percentage:.1f}%")
+
+    subject_df = pd.DataFrame({
+        "Student": df[student_column],
+        "Marks": df[selected_subject]
+    })
+    subject_df = subject_df.sort_values("Marks", ascending=False)
+
+    fig = px.bar(
+        subject_df, x="Student", y="Marks",
+        title=f"{selected_subject} Performance",
+        text="Marks"
+    )
+    fig.add_hline(y=passing_marks, line_dash="dash", annotation_text="Passing Marks")
+    fig.update_layout(yaxis_range=[0, 100])
+    st.plotly_chart(fig, use_container_width=True)
+
+    st.write("### Statistics")
+
+    statistics = pd.DataFrame({
+        "Statistic": ["Average", "Median", "Highest", "Lowest", "Standard Deviation", "Pass Percentage"],
+        "Value": [
+            subject_marks.mean(),
+            subject_marks.median(),
+            subject_marks.max(),
+            subject_marks.min(),
+            subject_marks.std(),
+            pass_percentage
+        ]
+    })
+
+    st.dataframe(statistics, use_container_width=True, hide_index=True)
+
+with tab4:
+
+    st.subheader("Compare All Students")
+
+    ranking = df[
+        [student_column, "Total", "Average", "Passed Subjects", "Failed Subjects", "Result", "Rank"]
+    ].sort_values("Rank")
+
+    st.dataframe(ranking, use_container_width=True, hide_index=True)
+
+    st.write("### Average Comparison")
+
+    comparison = df[[student_column, "Average"]].sort_values("Average", ascending=False)
+
+    fig = px.bar(
+        comparison, x=student_column, y="Average",
+        text="Average", title="Student Average Comparison"
+    )
+    fig.add_hline(y=df["Average"].mean(), line_dash="dash", annotation_text="Class Average")
+    fig.update_layout(yaxis_range=[0, 100])
+    st.plotly_chart(fig, use_container_width=True)
+
+    st.write("### Pass / Fail Distribution")
+
+    result_count = df["Result"].value_counts()
+    fig2 = px.pie(
+        values=result_count.values,
+        names=result_count.index,
+        title="Student Results",
+        hole=0.4
+    )
+    st.plotly_chart(fig2, use_container_width=True)
+
+    st.write("### Subject Average Comparison")
+
+    subject_average = pd.DataFrame({
+        "Subject": subject_columns,
+        "Average": [df[subject].mean() for subject in subject_columns]
+    })
+
+    fig3 = px.bar(
+        subject_average, x="Subject", y="Average",
+        text="Average", title="Average Marks by Subject"
+    )
+    fig3.add_hline(y=passing_marks, line_dash="dash", annotation_text="Passing Marks")
+    fig3.update_layout(yaxis_range=[0, 100])
+    st.plotly_chart(fig3, use_container_width=True)
+================================================================================
+
+
+================================================================================
+FILE [10/44]: Python_Lab_Programs/10_Multi_Route_Flask.py
+Full Path : /Users/dazzelr/PycharmProjects/Python_Lab_Programs/10_Multi_Route_Flask.py
+Stats     : 37 lines | 662 bytes
+--------------------------------------------------------------------------------
+from flask import Flask
+
+app = Flask(__name__)
+
+
+@app.route("/")
+def home():
+    return "Welcome to Student Portal"
+
+
+@app.route("/about")
+def about():
+    return "This is the About Page"
+
+
+@app.route("/courses")
+def courses():
+    return "Courses: BCA, BSc, MCA, MSc"
+
+
+@app.route("/contact")
+def contact():
+    return "Email: ts@example.com"
+
+
+@app.route("/profile")
+def profile():
+    return "Student Name: Tanishq Saini | Course: BCA | Contact: ts@example.com"
+
+
+@app.route("/subjects")
+def subjects():
+    return "Subjects: Python, Java, Database Management, Artificial Intelligence"
+
+
+if __name__ == "__main__":
+    app.run(debug=True, use_reloader=False)
+================================================================================
+
+
+================================================================================
+FILE [11/44]: Python_Lab_Programs/11_Flask_Application_Deployment.py
+Full Path : /Users/dazzelr/PycharmProjects/Python_Lab_Programs/11_Flask_Application_Deployment.py
+Stats     : 127 lines | 3,051 bytes
+--------------------------------------------------------------------------------
+from flask import Flask, render_template_string, request, redirect, url_for
+
+app = Flask(__name__)
+
+students = []
+
+HOME_PAGE = """
+<!DOCTYPE html>
+<html>
+<head><title>Student Portal</title></head>
+<body>
+    <h1>Student Portal</h1>
+    <nav>
+        <a href="/">Home</a> |
+        <a href="/register">Register</a> |
+        <a href="/students">View Students</a> |
+        <a href="/about">About</a>
+    </nav>
+    <hr>
+    <p>Welcome to the Student Portal. Use the navigation to explore.</p>
+</body>
+</html>
+"""
+
+REGISTER_PAGE = """
+<!DOCTYPE html>
+<html>
+<head><title>Register Student</title></head>
+<body>
+    <h1>Register Student</h1>
+    <nav>
+        <a href="/">Home</a> |
+        <a href="/register">Register</a> |
+        <a href="/students">View Students</a> |
+        <a href="/about">About</a>
+    </nav>
+    <hr>
+    <form method="POST" action="/register">
+        <label>Name:</label><br>
+        <input type="text" name="name" required><br><br>
+        <label>Email:</label><br>
+        <input type="email" name="email" required><br><br>
+        <label>Course:</label><br>
+        <input type="text" name="course" required><br><br>
+        <button type="submit">Register</button>
+    </form>
+</body>
+</html>
+"""
+
+STUDENTS_PAGE = """
+<!DOCTYPE html>
+<html>
+<head><title>All Students</title></head>
+<body>
+    <h1>Registered Students</h1>
+    <nav>
+        <a href="/">Home</a> |
+        <a href="/register">Register</a> |
+        <a href="/students">View Students</a> |
+        <a href="/about">About</a>
+    </nav>
+    <hr>
+    {% if students %}
+    <table border="1" cellpadding="8">
+        <tr><th>Name</th><th>Email</th><th>Course</th></tr>
+        {% for s in students %}
+        <tr><td>{{ s.name }}</td><td>{{ s.email }}</td><td>{{ s.course }}</td></tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <p>No students registered yet.</p>
+    {% endif %}
+</body>
+</html>
+"""
+
+ABOUT_PAGE = """
+<!DOCTYPE html>
+<html>
+<head><title>About</title></head>
+<body>
+    <h1>About</h1>
+    <nav>
+        <a href="/">Home</a> |
+        <a href="/register">Register</a> |
+        <a href="/students">View Students</a> |
+        <a href="/about">About</a>
+    </nav>
+    <hr>
+    <p>Student Portal built using Flask.</p>
+    <p>Developer: Tanishq Saini | Course: BCA</p>
+</body>
+</html>
+"""
+
+
+@app.route("/")
+def home():
+    return render_template_string(HOME_PAGE)
+
+
+@app.route("/register", methods=["GET", "POST"])
+def register():
+    if request.method == "POST":
+        student = {
+            "name": request.form["name"],
+            "email": request.form["email"],
+            "course": request.form["course"]
+        }
+        students.append(student)
+        return redirect(url_for("view_students"))
+    return render_template_string(REGISTER_PAGE)
+
+
+@app.route("/students")
+def view_students():
+    return render_template_string(STUDENTS_PAGE, students=students)
+
+
+@app.route("/about")
+def about():
+    return render_template_string(ABOUT_PAGE)
+
+
+if __name__ == "__main__":
+    app.run(debug=True, port=5001, use_reloader=False)
+================================================================================
+
+
+================================================================================
+FILE [12/44]: Python_Lab_Programs/12_File_Read_Write_Operations.py
+Full Path : /Users/dazzelr/PycharmProjects/Python_Lab_Programs/12_File_Read_Write_Operations.py
+Stats     : 119 lines | 3,075 bytes
+--------------------------------------------------------------------------------
+import os
+import xml.etree.ElementTree as ET
+
+print("=" * 50)
+print("  Read and Write Operations with Files")
+print("=" * 50)
+
+print("\n--- Text File Operations ---")
+
+with open("sample.txt", "w") as f:
+    f.write("Name: Tanishq Saini\n")
+    f.write("Course: BCA\n")
+    f.write("College: Christ University\n")
+
+print("Written to sample.txt")
+
+with open("sample.txt", "r") as f:
+    content = f.read()
+    print("Reading sample.txt:")
+    print(content)
+
+with open("sample.txt", "a") as f:
+    f.write("Year: 2024\n")
+
+print("Appended to sample.txt")
+
+with open("sample.txt", "r") as f:
+    lines = f.readlines()
+    print("Reading line by line:")
+    for i, line in enumerate(lines, 1):
+        print(f"  Line {i}: {line.strip()}")
+
+print("\n--- Binary File Operations ---")
+
+import struct
+
+student_record = struct.pack('20s i f', b'Tanishq', 20, 95.5)
+
+with open("student.bin", "wb") as f:
+    f.write(student_record)
+
+print("Written binary data to student.bin")
+
+with open("student.bin", "rb") as f:
+    data = f.read()
+    name, age, marks = struct.unpack('20s i f', data)
+    print(f"  Name: {name.decode().strip(chr(0))}")
+    print(f"  Age: {age}")
+    print(f"  Marks: {marks:.1f}")
+
+records = [
+    struct.pack('20s i f', b'Tanishq', 20, 95.5),
+    struct.pack('20s i f', b'Nishita', 21, 88.0),
+    struct.pack('20s i f', b'Ashish', 22, 76.5),
+]
+
+with open("students.bin", "wb") as f:
+    for record in records:
+        f.write(record)
+
+print("\nWritten multiple records to students.bin")
+
+record_size = struct.calcsize('20s i f')
+with open("students.bin", "rb") as f:
+    print("Reading all binary records:")
+    while True:
+        data = f.read(record_size)
+        if not data:
+            break
+        name, age, marks = struct.unpack('20s i f', data)
+        print(f"  Name: {name.decode().strip(chr(0))}, Age: {age}, Marks: {marks:.1f}")
+
+if os.path.exists("student.bin"):
+    os.remove("student.bin")
+if os.path.exists("students.bin"):
+    os.remove("students.bin")
+
+print("\n--- XML File Operations ---")
+
+root = ET.Element("students")
+
+student_data = [
+    ("Tanishq", "tanishq@example.com", "BCA"),
+    ("Nishita", "nishita@example.com", "BSc"),
+    ("Ashish", "ashish@example.com", "MCA"),
+]
+
+for name, email, course in student_data:
+    student = ET.SubElement(root, "student")
+    student.set("name", name)
+
+    email_elem = ET.SubElement(student, "email")
+    email_elem.text = email
+
+    course_elem = ET.SubElement(student, "course")
+    course_elem.text = course
+
+tree = ET.ElementTree(root)
+tree.write("students.xml")
+print("Written to students.xml")
+
+tree = ET.parse("students.xml")
+root = tree.getroot()
+
+print("Reading students.xml:")
+for student in root.findall("student"):
+    name = student.get("name")
+    email = student.find("email").text
+    course = student.find("course").text
+    print(f"  Name: {name}, Email: {email}, Course: {course}")
+
+if os.path.exists("sample.txt"):
+    os.remove("sample.txt")
+if os.path.exists("students.xml"):
+    os.remove("students.xml")
+
+print("\n" + "=" * 50)
+print("  Demo Complete")
+print("=" * 50)
+================================================================================
+
+
+================================================================================
+FILE [13/44]: Python_Lab_Programs/13_Statistical_Analysis_Pandas.py
+Full Path : /Users/dazzelr/PycharmProjects/Python_Lab_Programs/13_Statistical_Analysis_Pandas.py
+Stats     : 44 lines | 1,075 bytes
+--------------------------------------------------------------------------------
+import pandas as pd
+
+print("=" * 50)
+print("  Statistical Analysis on Dataset")
+print("=" * 50)
+
+data = {
+    "Student": ["Amit", "Tanishq", "Nishita", "Rahul", "Priya", "Sneha", "Ashish", "Riya"],
+    "Math": [78, 95, 88, 45, 92, 67, 55, 83],
+    "Python": [85, 100, 90, 50, 89, 72, 60, 78],
+    "DBMS": [72, 92, 85, 38, 95, 65, 48, 80],
+    "AI": [90, 98, 92, 42, 91, 70, 58, 85],
+}
+
+df = pd.DataFrame(data)
+
+print("\n--- Dataset ---")
+print(df)
+
+subjects = ["Math", "Python", "DBMS", "AI"]
+
+print("\n--- Mean (Average) ---")
+for subject in subjects:
+    print(f"  {subject}: {df[subject].mean():.2f}")
+
+print("\n--- Median ---")
+for subject in subjects:
+    print(f"  {subject}: {df[subject].median():.2f}")
+
+print("\n--- Standard Deviation ---")
+for subject in subjects:
+    print(f"  {subject}: {df[subject].std():.2f}")
+
+print("\n--- Summary Statistics ---")
+print(df[subjects].describe())
+
+df["Average"] = df[subjects].mean(axis=1)
+
+print("\n--- Student Averages ---")
+print(df[["Student", "Average"]])
+
+print("\n" + "=" * 50)
+print("  Demo Complete")
+print("=" * 50)
+================================================================================
+
+
+================================================================================
+FILE [14/44]: Python_Lab_Programs/14_Apply_Function_Student_Dataset.py
+Full Path : /Users/dazzelr/PycharmProjects/Python_Lab_Programs/14_Apply_Function_Student_Dataset.py
+Stats     : 117 lines | 2,537 bytes
+--------------------------------------------------------------------------------
+import pandas as pd
+
+print("=" * 50)
+print("  Demonstrate apply() Function on Student Dataset")
+print("=" * 50)
+
+data = {
+    "Student": ["Amit", "Tanishq", "Nishita", "Rahul", "Priya", "Sneha", "Ashish", "Riya"],
+    "Math": [78, 95, 88, 45, 92, 67, 55, 83],
+    "Python": [85, 100, 90, 50, 89, 72, 60, 78],
+    "DBMS": [72, 92, 85, 38, 95, 65, 48, 80],
+    "AI": [90, 98, 92, 42, 91, 70, 58, 85],
+    "Attendance": [91, 96, 78, 65, 88, 82, 70, 93],
+}
+
+df = pd.DataFrame(data)
+subjects = ["Math", "Python", "DBMS", "AI"]
+
+print("\n--- Original Dataset ---")
+print(df)
+
+print("\n--- 1. apply() to Calculate Average Marks (Row-wise) ---")
+df["Average"] = df[subjects].apply(lambda row: row.mean(), axis=1)
+print(df[["Student", "Average"]])
+
+
+print("\n--- 2. apply() to Assign Grade ---")
+
+
+def assign_grade(avg):
+    if avg >= 90:
+        return "A+"
+    elif avg >= 80:
+        return "A"
+    elif avg >= 70:
+        return "B"
+    elif avg >= 60:
+        return "C"
+    elif avg >= 50:
+        return "D"
+    else:
+        return "F"
+
+
+df["Grade"] = df["Average"].apply(assign_grade)
+print(df[["Student", "Average", "Grade"]])
+
+
+print("\n--- 3. apply() to Determine Pass/Fail ---")
+
+
+def check_result(row):
+    for subject in subjects:
+        if row[subject] < 40:
+            return "FAIL"
+    return "PASS"
+
+
+df["Result"] = df.apply(check_result, axis=1)
+print(df[["Student", "Result"]])
+
+
+print("\n--- 4. apply() to Check Attendance Status ---")
+
+
+def check_attendance(att):
+    if att >= 85:
+        return "Regular"
+    elif att >= 75:
+        return "Irregular"
+    else:
+        return "Detained"
+
+
+df["Attendance_Status"] = df["Attendance"].apply(check_attendance)
+print(df[["Student", "Attendance", "Attendance_Status"]])
+
+
+print("\n--- 5. apply() to Add Bonus Marks ---")
+
+
+def add_bonus(row):
+    if row["Attendance"] > 85:
+        return row["Average"] + 5
+    return row["Average"]
+
+
+df["Final_Marks"] = df.apply(add_bonus, axis=1)
+print(df[["Student", "Average", "Attendance", "Final_Marks"]])
+
+
+print("\n--- 6. apply() on Columns (Column-wise) ---")
+print("Subject-wise Mean:")
+print(df[subjects].apply(lambda col: col.mean()))
+
+print("\nSubject-wise Max:")
+print(df[subjects].apply(lambda col: col.max()))
+
+
+print("\n--- 7. apply() to Find Topper in Each Subject ---")
+
+
+def find_topper(col):
+    idx = col.idxmax()
+    return df.loc[idx, "Student"]
+
+
+toppers = df[subjects].apply(find_topper)
+print(toppers)
+
+
+print("\n--- Final Dataset ---")
+print(df)
+
+print("\n" + "=" * 50)
+print("  Demo Complete")
+print("=" * 50)
+================================================================================
+
+
+================================================================================
+FILE [15/44]: Python_Lab_Programs/15_DataFrame_Operations.py
+Full Path : /Users/dazzelr/PycharmProjects/Python_Lab_Programs/15_DataFrame_Operations.py
+Stats     : 103 lines | 3,154 bytes
+--------------------------------------------------------------------------------
+import pandas as pd
+import matplotlib.pyplot as plt
+
+print("=" * 50)
+print("  DataFrame Operations - Calculations & Sorting")
+print("=" * 50)
+
+data = {
+    "Student": ["Amit", "Tanishq", "Nishita", "Rahul", "Priya", "Sneha", "Ashish", "Riya", "Karan", "Meera"],
+    "Math": [78, 95, 88, 45, 92, 67, 55, 83, 70, 60],
+    "Python": [85, 100, 90, 50, 89, 72, 60, 78, 75, 65],
+    "DBMS": [72, 92, 85, 38, 95, 65, 48, 80, 68, 58],
+    "AI": [90, 98, 92, 42, 91, 70, 58, 85, 73, 62],
+    "Java": [80, 88, 82, 40, 87, 63, 52, 76, 71, 55],
+}
+
+df = pd.DataFrame(data)
+
+subjects = ["Math", "Python", "DBMS", "AI", "Java"]
+
+print("\n--- Dataset ---")
+print(df)
+
+print("\n--- Mean ---")
+for s in subjects:
+    print(f"  {s}: {df[s].mean():.2f}")
+
+print("\n--- Median ---")
+for s in subjects:
+    print(f"  {s}: {df[s].median():.2f}")
+
+print("\n--- Standard Deviation ---")
+for s in subjects:
+    print(f"  {s}: {df[s].std():.2f}")
+
+print("\n--- Variance ---")
+for s in subjects:
+    print(f"  {s}: {df[s].var():.2f}")
+
+print("\n--- Min and Max ---")
+for s in subjects:
+    print(f"  {s}: Min={df[s].min()}, Max={df[s].max()}")
+
+print("\n--- Complete Statistics ---")
+print(df[subjects].describe())
+
+df["Average"] = df[subjects].mean(axis=1)
+df["Total"] = df[subjects].sum(axis=1)
+df["Result"] = df[subjects].apply(lambda row: "PASS" if all(row >= 40) else "FAIL", axis=1)
+
+print("\n--- Results ---")
+print(df[["Student", "Total", "Average", "Result"]])
+
+fig, axes = plt.subplots(2, 3, figsize=(18, 12))
+
+axes[0, 0].bar(df["Student"], df["Average"], color="steelblue")
+axes[0, 0].axhline(y=df["Average"].mean(), color='red', linestyle='--', label='Class Average')
+axes[0, 0].set_title("Student Average Marks")
+axes[0, 0].set_ylabel("Average")
+axes[0, 0].tick_params(axis='x', rotation=45)
+axes[0, 0].legend()
+
+subject_means = [df[s].mean() for s in subjects]
+colors = ["#FF6B6B", "#4ECDC4", "#45B7D1", "#96CEB4", "#FFEAA7"]
+axes[0, 1].bar(subjects, subject_means, color=colors)
+axes[0, 1].set_title("Subject-wise Average")
+axes[0, 1].set_ylabel("Average Marks")
+
+axes[0, 2].boxplot([df[s] for s in subjects], labels=subjects)
+axes[0, 2].set_title("Subject Distribution (Box Plot)")
+axes[0, 2].set_ylabel("Marks")
+
+for subject in subjects:
+    axes[1, 0].plot(df["Student"], df[subject], marker='o', label=subject)
+axes[1, 0].set_title("Performance Across Subjects")
+axes[1, 0].set_ylabel("Marks")
+axes[1, 0].legend(fontsize=8)
+axes[1, 0].tick_params(axis='x', rotation=45)
+
+subject_stds = [df[s].std() for s in subjects]
+axes[1, 1].bar(subjects, subject_stds, color=colors)
+axes[1, 1].set_title("Subject-wise Standard Deviation")
+axes[1, 1].set_ylabel("Std Deviation")
+
+pass_count = (df["Result"] == "PASS").sum()
+fail_count = (df["Result"] == "FAIL").sum()
+axes[1, 2].pie(
+    [pass_count, fail_count],
+    labels=["Pass", "Fail"],
+    autopct='%1.1f%%',
+    colors=["#4ECDC4", "#FF6B6B"]
+)
+axes[1, 2].set_title("Pass/Fail Distribution")
+
+plt.tight_layout()
+plt.savefig("statistical_analysis_visualizations.png")
+plt.show()
+
+print("\nVisualizations saved as statistical_analysis_visualizations.png")
+
+print("\n" + "=" * 50)
+print("  Demo Complete")
+print("=" * 50)
+================================================================================
+
+
+================================================================================
+FILE [16/44]: Python_Lab_Programs/16_CSV_Create_Load.py
+Full Path : /Users/dazzelr/PycharmProjects/Python_Lab_Programs/16_CSV_Create_Load.py
+Stats     : 80 lines | 2,044 bytes
+--------------------------------------------------------------------------------
+import csv
+import os
+
+print("=" * 50)
+print("  CSV File Operations")
+print("=" * 50)
+
+print("\n--- Creating CSV File ---")
+
+header = ["Name", "Age", "Course", "Marks", "Email"]
+
+students = [
+    ["Tanishq", 20, "BCA", 95, "tanishq@example.com"],
+    ["Nishita", 21, "BSc", 88, "nishita@example.com"],
+    ["Ashish", 22, "MCA", 76, "ashish@example.com"],
+    ["Rahul", 20, "BCA", 65, "rahul@example.com"],
+    ["Priya", 21, "BSc", 92, "priya@example.com"],
+]
+
+with open("students.csv", "w", newline="") as f:
+    writer = csv.writer(f)
+    writer.writerow(header)
+    writer.writerows(students)
+
+print("Created students.csv")
+
+print("\n--- Reading CSV using csv.reader ---")
+
+with open("students.csv", "r") as f:
+    reader = csv.reader(f)
+    for row in reader:
+        print(f"  {row}")
+
+print("\n--- Reading CSV using csv.DictReader ---")
+
+with open("students.csv", "r") as f:
+    reader = csv.DictReader(f)
+    for row in reader:
+        print(f"  {row['Name']} | Age: {row['Age']} | Course: {row['Course']} | Marks: {row['Marks']}")
+
+print("\n--- Loading CSV into List of Dictionaries ---")
+
+data = []
+with open("students.csv", "r") as f:
+    reader = csv.DictReader(f)
+    for row in reader:
+        data.append(row)
+
+print(f"Loaded {len(data)} records into list.")
+for record in data:
+    print(f"  {record}")
+
+print("\n--- Loading CSV into Dictionary of Lists ---")
+
+columns = {}
+with open("students.csv", "r") as f:
+    reader = csv.DictReader(f)
+    for row in reader:
+        for key, value in row.items():
+            if key not in columns:
+                columns[key] = []
+            columns[key].append(value)
+
+print("Column-wise data:")
+for col_name, values in columns.items():
+    print(f"  {col_name}: {values}")
+
+print("\n--- Filtering Data ---")
+
+print("Students with Marks > 80:")
+for record in data:
+    if int(record['Marks']) > 80:
+        print(f"  {record['Name']} - {record['Marks']}")
+
+if os.path.exists("students.csv"):
+    os.remove("students.csv")
+
+print("\n" + "=" * 50)
+print("  Demo Complete")
+print("=" * 50)
+================================================================================
+
+
+================================================================================
+FILE [17/44]: Python_Lab_Programs/17_CSV_Attendance_Bonus_Average.py
+Full Path : /Users/dazzelr/PycharmProjects/Python_Lab_Programs/17_CSV_Attendance_Bonus_Average.py
+Stats     : 84 lines | 2,575 bytes
+--------------------------------------------------------------------------------
+import pandas as pd
+import random
+
+print("=" * 50)
+print("  CSV Operations - Attendance, Bonus & Average")
+print("=" * 50)
+
+print("\n--- Step 1: Creating students.csv with 30 records ---")
+
+names = [
+    "Amit", "Tanishq", "Nishita", "Rahul", "Priya",
+    "Sneha", "Ashish", "Riya", "Karan", "Meera",
+    "Rohan", "Anita", "Vikram", "Pooja", "Arjun",
+    "Deepa", "Suresh", "Kavita", "Manish", "Neha",
+    "Rajesh", "Sunita", "Arun", "Divya", "Pankaj",
+    "Swati", "Nikhil", "Rekha", "Sanjay", "Anjali"
+]
+
+random.seed(42)
+
+data = {
+    "Student": names,
+    "Marks": [random.randint(35, 100) for _ in range(30)],
+    "Attendance": [random.randint(60, 100) for _ in range(30)],
+}
+
+df = pd.DataFrame(data)
+df.to_csv("students.csv", index=False)
+
+print(f"Created students.csv with {len(df)} records")
+print(df.to_string(index=False))
+
+print("\n" + "=" * 50)
+print("--- Step 2: Students with Attendance Below 85% ---")
+
+low_attendance_df = df[df["Attendance"] < 85]
+
+print(f"\nFound {len(low_attendance_df)} students with attendance below 85%:")
+print(low_attendance_df.to_string(index=False))
+
+low_attendance_df.to_csv("students_low_attendance.csv", index=False)
+print("\nSaved to students_low_attendance.csv")
+
+print("\n" + "=" * 50)
+print("--- Step 3: Bonus Marks for Attendance > 85% ---")
+
+def add_bonus_marks(row):
+    if row["Attendance"] > 85:
+        return row["Marks"] + 5
+    return row["Marks"]
+
+df["Bonus_Marks"] = df.apply(add_bonus_marks, axis=1)
+
+print("\nStudents with Bonus Marks (Attendance > 85% get +5):")
+print(df[["Student", "Marks", "Attendance", "Bonus_Marks"]].to_string(index=False))
+
+df.to_csv("students_bonus.csv", index=False)
+print("\nSaved to students_bonus.csv")
+
+print("\n" + "=" * 50)
+print("--- Step 4: Students Above Average Marks ---")
+
+average_marks = df["Marks"].mean()
+print(f"\nAverage Marks: {average_marks:.2f}")
+
+above_average_df = df[df["Marks"] > average_marks]
+
+print(f"\nFound {len(above_average_df)} students above average:")
+print(above_average_df[["Student", "Marks"]].to_string(index=False))
+
+above_average_df.to_csv("average_marks.csv", index=False)
+print("\nSaved to average_marks.csv")
+
+print("\n" + "=" * 50)
+print("  Summary of Files Created")
+print("=" * 50)
+print("  1. students.csv           - Original 30 student records")
+print("  2. students_low_attendance.csv - Students with attendance < 85%")
+print("  3. students_bonus.csv     - All students with Bonus_Marks column")
+print("  4. average_marks.csv      - Students scoring above average marks")
+
+print("\n" + "=" * 50)
+print("  Demo Complete")
+print("=" * 50)
+================================================================================
+
+
+
+################################################################################
+# PART 2: Root Directory Programs
+################################################################################
+
+================================================================================
+FILE [18/44]: APiSerach.py
+Full Path : /Users/dazzelr/PycharmProjects/APiSerach.py
+Stats     : 13 lines | 401 bytes
+--------------------------------------------------------------------------------
+import requests
+
+url = "https://jsonplaceholder.typicode.com/users"
+response = requests.get(url)
+if response.status_code == 200:
+    users = response.json()
+    search = input("Enter City Name: ")
+    for user in users:
+        if user['address']['city'].lower() == search.lower():
+            print("Name", user['name'])
+            print("Email: ", user['email'])
+else:
+    print("Result not found")
+================================================================================
+
+
+================================================================================
+FILE [19/44]: DataReadCSVOperation.py
+Full Path : /Users/dazzelr/PycharmProjects/DataReadCSVOperation.py
+Stats     : 15 lines | 248 bytes
+--------------------------------------------------------------------------------
+import numpy as np
+import pandas as pd
+
+csv = pd.read_csv("Numerical.csv")
+
+array = np.array(csv["f1"])
+
+print(array)
+
+print(np.max(array))
+print(np.min(array))
+print(np.median(array))
+print(np.std(array))
+print(np.sum(array))
+print(np.var(array))
+================================================================================
+
+
+================================================================================
+FILE [20/44]: FIleOrganiser.py
+Full Path : /Users/dazzelr/PycharmProjects/FIleOrganiser.py
+Stats     : 37 lines | 889 bytes
+--------------------------------------------------------------------------------
+import os
+import logging
+from shutil import move
+
+folderPath = 'TestFile'
+
+logging.basicConfig(
+    filename= os.path.join(folderPath, 'log.txt'),
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
+
+folder={
+    '.pdf': "PDF",
+    '.png': "Images",
+    '.jpg': "Images",
+    ".docx": "Documents",
+    ".txt": "Documents",
+    ".py": "Python Files",
+    ".csv": "Data Files",
+}
+files = os.listdir(folderPath)
+for file in files:
+    name, extension = os.path.splitext(file)
+    if extension in folder:
+        folderName = folder[extension]
+        destination = os.path.join(folderPath, folderName)
+
+        if not os.path.exists(destination):
+            os.makedirs(destination)
+
+        move(
+            os.path.join(folderPath, file),
+            os.path.join(destination, file)
+        )
+
+        logging.info(f"Moved {file} to {folderName}")
+================================================================================
+
+
+================================================================================
+FILE [21/44]: FancyIndexing.py
+Full Path : /Users/dazzelr/PycharmProjects/FancyIndexing.py
+Stats     : 34 lines | 659 bytes
+--------------------------------------------------------------------------------
+import numpy as np
+marks = np.array([45, 67, 82, 91, 56, 73])
+print("All Marks:")
+print(marks)
+print("\nElement at index 2:")
+print(marks[2])
+print("\nElements at indexes 0, 2 and 5:")
+print(marks[[0, 2, 5]])
+
+students = np.array([
+"Amit",
+"Priya",
+"Rahul",
+"Sneha",
+"Karan"
+])
+marks = np.array([78, 92, 65, 85, 74])
+selected_students = students[[0, 2, 4]]
+selected_marks = marks[[0, 2, 4]]
+print("Selected Students:")
+print(selected_students)
+print("\nTheir Marks:")
+print(selected_marks)
+
+marks = np.array([
+[78, 82, 75],
+[92, 88, 90],
+[65, 70, 68],
+[85, 80, 88]
+])
+print("Complete Dataset:")
+print(marks)
+print("\nRows 0, 2 and 3:")
+print(marks[[0, 2, 3]])
+================================================================================
+
+
+================================================================================
+FILE [22/44]: Gemini.py
+Full Path : /Users/dazzelr/PycharmProjects/Gemini.py
+Stats     : 290 lines | 6,850 bytes
+--------------------------------------------------------------------------------
+import json
+import requests
+import streamlit as st
+
+
+# -----------------------------
+# Page Configuration
+# -----------------------------
+st.set_page_config(
+    page_title="Gemini Chat",
+    page_icon="✦",
+    layout="wide"
+)
+
+
+# -----------------------------
+# Gemini Configuration
+# -----------------------------
+API_KEY = 'AIzaSyAfDPUtNXsNRjq1JHDkUdlGnVZoHK4nJX8'
+
+MODEL = "gemini-3.1-flash-lite"
+
+URL = (
+    f"https://generativelanguage.googleapis.com/v1beta/"
+    f"models/{MODEL}:streamGenerateContent"
+    f"?alt=sse&key={API_KEY}"
+)
+
+
+# -----------------------------
+# Session State
+# -----------------------------
+if "messages" not in st.session_state:
+    st.session_state.messages = []
+
+
+# -----------------------------
+# Sidebar
+# -----------------------------
+with st.sidebar:
+    st.title("✦ Gemini Chat")
+
+    st.caption("Powered by Google Gemini")
+
+    if st.button("+ New Chat", use_container_width=True):
+        st.session_state.messages = []
+        st.rerun()
+
+    st.divider()
+
+    st.write("**Model**")
+    st.code(MODEL)
+
+    st.divider()
+
+    st.caption("Gemini API • Streamlit • requests")
+
+
+# -----------------------------
+# Main UI
+# -----------------------------
+st.title("How can I help you?")
+
+# Display previous messages
+for message in st.session_state.messages:
+
+    with st.chat_message(message["role"]):
+        st.markdown(message["content"])
+
+        # Show token information if available
+        if message["role"] == "assistant" and "usage" in message:
+            usage = message["usage"]
+
+            with st.expander("Token usage"):
+                col1, col2, col3 = st.columns(3)
+
+                col1.metric(
+                    "Input tokens",
+                    usage.get("promptTokenCount", 0)
+                )
+
+                col2.metric(
+                    "Output tokens",
+                    usage.get("candidatesTokenCount", 0)
+                )
+
+                col3.metric(
+                    "Total tokens",
+                    usage.get("totalTokenCount", 0)
+                )
+
+
+# -----------------------------
+# Gemini Streaming Function
+# -----------------------------
+def stream_gemini(messages):
+
+    contents = []
+
+    for message in messages:
+
+        contents.append({
+            "role": (
+                "user"
+                if message["role"] == "user"
+                else "model"
+            ),
+            "parts": [
+                {
+                    "text": message["content"]
+                }
+            ]
+        })
+
+    payload = {
+        "contents": contents,
+        "generationConfig": {
+            "temperature": 0.7,
+            "maxOutputTokens": 2048
+        }
+    }
+
+    try:
+
+        response = requests.post(
+            URL,
+            json=payload,
+            stream=True,
+            timeout=120
+        )
+
+        if response.status_code != 200:
+
+            try:
+                error = response.json()
+                error_message = error.get(
+                    "error",
+                    {}
+                ).get(
+                    "message",
+                    "Unknown Gemini API error"
+                )
+            except Exception:
+                error_message = response.text
+
+            yield f"API Error: {error_message}"
+            return
+
+        for line in response.iter_lines():
+
+            if not line:
+                continue
+
+            # SSE format:
+            # data: {...}
+            if line.startswith(b"data: "):
+
+                data = line[6:].decode("utf-8")
+
+                try:
+
+                    chunk = json.loads(data)
+
+                    # -------------------------
+                    # Extract text
+                    # -------------------------
+                    candidates = chunk.get(
+                        "candidates",
+                        []
+                    )
+
+                    if candidates:
+
+                        parts = candidates[0].get(
+                            "content",
+                            {}
+                        ).get(
+                            "parts",
+                            []
+                        )
+
+                        for part in parts:
+
+                            text = part.get("text")
+
+                            if text:
+                                yield text
+
+                    # -------------------------
+                    # Extract usage metadata
+                    # -------------------------
+                    usage = chunk.get(
+                        "usageMetadata"
+                    )
+
+                    if usage:
+                        st.session_state["latest_usage"] = usage
+
+                except json.JSONDecodeError:
+                    continue
+
+    except requests.exceptions.Timeout:
+
+        yield "Request timed out. Please try again."
+
+    except requests.exceptions.RequestException as e:
+
+        yield f"Request failed: {e}"
+
+
+# -----------------------------
+# Chat Input
+# -----------------------------
+prompt = st.chat_input("Message Gemini...")
+
+
+if prompt:
+
+    # Save user message
+    st.session_state.messages.append({
+        "role": "user",
+        "content": prompt
+    })
+
+    # Display user message
+    with st.chat_message("user"):
+        st.markdown(prompt)
+
+    # Prepare response
+    with st.chat_message("assistant"):
+
+        # Reset token information
+        st.session_state["latest_usage"] = {}
+
+        # Stream response
+        response_text = st.write_stream(
+            stream_gemini(
+                st.session_state.messages
+            )
+        )
+
+        # Make sure response is a string
+        if not isinstance(response_text, str):
+            response_text = "".join(response_text)
+
+        # Get usage information
+        usage = st.session_state.get(
+            "latest_usage",
+            {}
+        )
+
+        # Save assistant response
+        st.session_state.messages.append({
+            "role": "assistant",
+            "content": response_text,
+            "usage": usage
+        })
+
+        # -------------------------
+        # Token Display
+        # -------------------------
+        if usage:
+
+            with st.expander("Token usage"):
+
+                col1, col2, col3 = st.columns(3)
+
+                col1.metric(
+                    "Input tokens",
+                    usage.get(
+                        "promptTokenCount",
+                        0
+                    )
+                )
+
+                col2.metric(
+                    "Output tokens",
+                    usage.get(
+                        "candidatesTokenCount",
+                        0
+                    )
+                )
+
+                col3.metric(
+                    "Total tokens",
+                    usage.get(
+                        "totalTokenCount",
+                        0
+                    )
+                )
+================================================================================
+
+
+================================================================================
+FILE [23/44]: RestAPI.py
+Full Path : /Users/dazzelr/PycharmProjects/RestAPI.py
+Stats     : 16 lines | 298 bytes
+--------------------------------------------------------------------------------
+import requests
+
+url = 'https://jsonplaceholder.typicode.com/users'
+
+response = requests.get(url)
+if response.status_code == 200:
+    users = response.json()
+    print("Total Users: ", len(users))
+    for user in users:
+        print(user)
+else:
+    print("Error Code: ", response.status_code)
+
+
+
+
+================================================================================
+
+
+================================================================================
+FILE [24/44]: Unit1-Lab2-LoginRegistratinFroms.py
+Full Path : /Users/dazzelr/PycharmProjects/Unit1-Lab2-LoginRegistratinFroms.py
+Stats     : 79 lines | 2,169 bytes
+--------------------------------------------------------------------------------
+import sys
+import re
+from re import match
+
+from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QLineEdit, QPushButton, QMessageBox
+
+app = QApplication(sys.argv)
+window = QMainWindow()
+
+username = "admin"
+password = "Admin@147"
+
+
+def check_login():
+    entered_user = qlineEdit.text()
+    entered_pass = qlineEdit1.text()
+    patternForPassword = r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+
+    msg = QMessageBox(window)
+
+    if re.fullmatch(patternForPassword, entered_pass):
+        if entered_user == username and entered_pass == password:
+            msg.setIcon(QMessageBox.Icon.Information)
+            msg.setText("Login Successful!")
+            msg.setWindowTitle("Success")
+        else:
+            msg.setIcon(QMessageBox.Icon.Critical)
+            msg.setText("Invalid Username or Password")
+            msg.setWindowTitle("Error")
+    else:
+        msg.setIcon(QMessageBox.Icon.Warning)
+        msg.setWindowTitle("Weak Password")
+        msg.setText(
+            "Password must be at least 8 characters long.\n"
+            "It must contain at least 1 lowercase letter, 1 uppercase letter, "
+            "1 digit, and 1 special character (@$!%*?&)."
+        )
+        msg.exec()
+        return
+    msg.exec()
+
+
+
+window.setWindowTitle("Login Registratin Froms")
+window.setGeometry(720, 720, 600, 400)
+
+qLabel = QLabel(window)
+qLabel.setText("Username")
+qLabel.setStyleSheet("color: rgb(255, 255, 255);")
+qLabel.setGeometry(50, 50, 60,30)
+qLabel.show()
+
+qlineEdit = QLineEdit(window)
+qlineEdit.setText("")
+qlineEdit.setStyleSheet("color: rgb(255, 255, 255);")
+qlineEdit.setGeometry(150, 50, 80,30)
+
+
+qLabel = QLabel(window)
+qLabel.setText("Password")
+qLabel.setStyleSheet("color: rgb(255, 255, 255);")
+qLabel.setGeometry(50, 100, 60,30)
+qLabel.show()
+
+qlineEdit1 = QLineEdit(window)
+qlineEdit1.setText("")
+qlineEdit1.setStyleSheet("color: rgb(255, 255, 255);")
+qlineEdit1.setGeometry(150, 100, 80,30)
+
+
+button = QPushButton(window)
+button.setText("Login")
+button.setStyleSheet("color: rgb(255, 255, 255);")
+button.setGeometry(100, 150, 80, 30)
+
+button.clicked.connect(check_login)
+
+window.show()
+sys.exit(app.exec_())
+================================================================================
+
+
+================================================================================
+FILE [25/44]: Unit1-Lab3-ValidateTheResult.py
+Full Path : /Users/dazzelr/PycharmProjects/Unit1-Lab3-ValidateTheResult.py
+Stats     : 83 lines | 2,951 bytes
+--------------------------------------------------------------------------------
+import sys
+import re
+from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QLineEdit, QPushButton, QMessageBox
+from PyQt5.QtCore import Qt
+
+
+class LoginWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+
+        self.email = "admin@admin.com"
+        self.password = "Admin@147"
+
+        self.init_ui()
+
+    def init_ui(self):
+        self.setWindowTitle("Login Registration Form")
+        self.setGeometry(720, 200, 600, 400)  # Adjusted Y coordinate so it fits your screen
+
+        self.qLabelEmail = QLabel("Email", self)
+        self.qLabelEmail.setGeometry(50, 50, 100, 30)
+
+        self.qlineEdit = QLineEdit(self)
+        self.qlineEdit.setGeometry(150, 50, 120, 30)
+
+        self.qLabelPass = QLabel("Password", self)
+        self.qLabelPass.setGeometry(50, 100, 100, 30)
+
+        self.qlineEdit1 = QLineEdit(self)
+        self.qlineEdit1.setEchoMode(QLineEdit.EchoMode.Password)  # Masks the password text
+        self.qlineEdit1.setGeometry(150, 100, 120, 30)
+
+        self.button = QPushButton("Login", self)
+        self.button.setGeometry(100, 150, 80, 30)
+        self.button.clicked.connect(self.check_login)
+
+    def keyPressEvent(self, event):
+        if event.key() == Qt.Key_Escape:
+            self.close()
+        else:
+            super().keyPressEvent(event)
+
+    def check_login(self):
+        entered_user = self.qlineEdit.text()
+        entered_pass = self.qlineEdit1.text()
+        patternForPassword = r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+        validEmail = r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+
+        msg = QMessageBox(self)
+
+        if re.fullmatch(validEmail, entered_user):
+            if re.fullmatch(patternForPassword, entered_pass):
+                if entered_user == self.email and entered_pass == self.password:
+                    msg.setIcon(QMessageBox.Icon.Information)
+                    msg.setText("Login Successful!")
+                    msg.setWindowTitle("Success")
+                else:
+                    msg.setIcon(QMessageBox.Icon.Critical)
+                    msg.setText("Invalid Username or Password")
+                    msg.setWindowTitle("Error")
+            else:
+                msg.setIcon(QMessageBox.Icon.Warning)
+                msg.setWindowTitle("Weak Password")
+                msg.setText(
+                    "Password must be at least 8 characters long.\n"
+                    "It must contain at least 1 lowercase letter, 1 uppercase letter, "
+                    "1 digit, and 1 special character (@$!%*?&)."
+                )
+                msg.exec_()
+                return
+        else:
+            msg.setIcon(QMessageBox.Icon.Warning)
+            msg.setWindowTitle("Invalid Email")
+            msg.setText("Invalid Email Format")
+
+        msg.exec_()
+
+
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    window = LoginWindow()
+    window.show()
+    sys.exit(app.exec_())
+================================================================================
+
+
+================================================================================
+FILE [26/44]: UserInfo.py
+Full Path : /Users/dazzelr/PycharmProjects/UserInfo.py
+Stats     : 21 lines | 711 bytes
+--------------------------------------------------------------------------------
+import requests
+
+userID = input("Enter User ID: ")
+url = 'https://jsonplaceholder.typicode.com/users/' + userID
+try:
+    response = requests.get(url)
+    if len(response.json()) > 0 or len(response.json()) > 10:
+        if response.status_code == 200:
+            data = response.json()
+            print("\n--User Info--")
+            print("Name: ", data['name'])
+            print("Email: ", data['email'])
+            print("Phone: ", data['phone'])
+            print("City: ", data['address']['city'])
+            print("Company: ", data['company']['name'])
+        else:
+            print("Error Code: ", response.status_code)
+    else:
+        print("User Not Found")
+except Exception as e:
+    print(e)
+================================================================================
+
+
+================================================================================
+FILE [27/44]: axisin python.py
+Full Path : /Users/dazzelr/PycharmProjects/axisin python.py
+Stats     : 15 lines | 390 bytes
+--------------------------------------------------------------------------------
+import numpy as np
+marks = np.array([40, 50, 60, 70, 80])
+print("Marks:")
+print(marks)
+print("\nMarks greater than 60:")
+print(marks[marks > 60])
+
+print("\nMarks less than 60:")
+print(marks[marks < 60])
+print("\nMarks greater than or equal to 60:")
+print(marks[marks >= 60])
+print("\nMarks equal to 60:")
+print(marks[marks == 60])
+print("\nMarks not equal to 60:")
+print(marks[marks != 60])
+================================================================================
+
+
+================================================================================
+FILE [28/44]: betterErrorHandling.py
+Full Path : /Users/dazzelr/PycharmProjects/betterErrorHandling.py
+Stats     : 13 lines | 345 bytes
+--------------------------------------------------------------------------------
+import requests
+
+url = "https://jsonplaceholder.typicode.com/users"
+try:
+    response = requests.get(url)
+    if response.status_code == 200:
+        users = response.json()
+        for user in users:
+            print(user['email'], user['name'])
+    else:
+        print("Error Code: ", response.status_code)
+except Exception as e:
+    print(e)
+================================================================================
+
+
+================================================================================
+FILE [29/44]: boolcompleteprogram.py
+Full Path : /Users/dazzelr/PycharmProjects/boolcompleteprogram.py
+Stats     : 61 lines | 1,491 bytes
+--------------------------------------------------------------------------------
+import numpy as np
+marks = np.array([35, 45, 67, 82, 91, 30, 76, 58])
+print("All Marks:")
+print(marks)
+# Students who passed
+passing = marks[marks >= 40]
+print("\nPassing Marks:")
+print(passing)
+
+# Students who failed
+failed = marks[marks < 40]
+print("\nFailed Marks:")
+print(failed)
+# Students scoring above 75
+high_scorers = marks[marks > 75]
+print("\nMarks above 75:")
+print(high_scorers)
+# Students scoring between 60 and 80
+medium_scorers = marks[(marks >= 60) & (marks <= 80)]
+print("\nMarks between 60 and 80:")
+print(medium_scorers)
+# Number of passing students
+passing_count = np.sum(marks >= 40)
+
+print("\nNumber of Passing Students:")
+print(passing_count)
+# Number of failed students
+failed_count = np.sum(marks < 40)
+print("\nNumber of Failed Students:")
+print(failed_count)
+
+
+marks1 = np.array([35, 48, 52, 67, 74, 81, 89, 95])
+# A. Students who scored above 80
+# marks[marks > 80]
+# B. Students who scored below 50
+# marks[marks < 50]
+# C. Students who scored between 50 and 80
+# marks[(marks >= 50) & (marks <= 80)]
+
+print(marks1[marks1 > 80])
+print(marks1[marks1 < 80])
+print(marks[(marks >= 50) & (marks <= 80)])
+
+marks2 = np.array([35, 42, 67, 28, 91, 56, 39, 78])
+# Ask:
+# How many students passed?
+#
+# They should figure out:
+# np.sum(marks >= 40)
+# Then ask:
+# How many students failed?
+# np.sum(marks < 40)
+
+print(np.sum(marks2 >= 40))
+print(np.sum(marks2 < 40))
+
+marks = np.array([25, 45, 58, 67, 72, 81, 94])
+
+result = marks[(marks < 40) | (marks > 90)]
+print(result)
+================================================================================
+
+
+================================================================================
+FILE [30/44]: booleanOps.py
+Full Path : /Users/dazzelr/PycharmProjects/booleanOps.py
+Stats     : 10 lines | 154 bytes
+--------------------------------------------------------------------------------
+import numpy as np
+marks = np.array([
+[78, 82, 75],
+[92, 88, 90],
+[35, 50, 49]
+])
+print("Marks:")
+print(marks)
+print("\nBoolean Array:")
+print(marks > 50)
+================================================================================
+
+
+================================================================================
+FILE [31/44]: build_notebook.py
+Full Path : /Users/dazzelr/PycharmProjects/build_notebook.py
+Stats     : 590 lines | 26,278 bytes
+--------------------------------------------------------------------------------
+import nbformat as nbf
+
+nb = nbf.v4.new_notebook()
+cells = []
+
+def md(text):
+    cells.append(nbf.v4.new_markdown_cell(text))
+
+def code(text):
+    cells.append(nbf.v4.new_code_cell(text))
+
+# ----------------------------------------------------------------------
+md(r"""# Sokoban Puzzle — State-Space Search & Intelligent Agent Design
+### CIA 1 — Search Challenge (Team 3)
+
+**Team members:** Ashish & Tanishq (24112518)
+**Programme:** BCA, CHRIST (Deemed to be University), Pune Lavasa Campus
+**Assigned problem:** Sokoban Puzzle
+
+This notebook covers, in order: problem description, formal problem
+formulation, PEAS analysis, agent architecture, environment
+representation, the BFS and DFS implementations, experimental results,
+and a comparison of the two algorithms.""")
+
+# ----------------------------------------------------------------------
+md(r"""## 1. Problem Description
+
+**Sokoban** ("warehouse keeper" in Japanese) is a classic puzzle in which an
+agent moves around a grid-based warehouse and pushes boxes onto marked
+storage locations. The agent can only *push* boxes (never pull them), can
+push only one box at a time, and cannot push a box into a wall or into
+another box. The puzzle is solved when every box rests on a storage
+location.
+
+Despite its simple rules, Sokoban is a well-known benchmark in AI search:
+its state space grows combinatorially with the number of boxes, it is
+[PSPACE-complete](https://en.wikipedia.org/wiki/Sokoban) in general, and it
+contains **irreversible moves** — pushing a box into a corner with no
+adjacent goal can make the puzzle permanently unsolvable. This makes it a
+good, non-trivial testbed for comparing uninformed search strategies.
+
+We use the standard single-character grid notation:
+
+| Symbol | Meaning          |
+|:------:|------------------|
+| `#`    | Wall             |
+| `@`    | Player           |
+| `+`    | Player on goal   |
+| `$`    | Box              |
+| `*`    | Box on goal      |
+| `.`    | Goal (storage)   |
+| ` `    | Empty floor      |""")
+
+# ----------------------------------------------------------------------
+md(r"""## 2. Problem Formulation (Task 1)
+
+Sokoban is formulated as a **state-space search problem** as follows.
+
+**1. Initial State** — The starting configuration of the warehouse: the
+(fixed) wall layout, the (fixed) set of goal cells, the starting position
+of every box, and the starting position of the player. Formally,
+$S_0 = (\text{player}_0, \text{boxes}_0)$. Walls and goals never change
+during the puzzle, so they are treated as static properties of the
+*environment*, not as part of the mutable search state.
+
+**2. Goal State** — Any state $(\text{player}, \text{boxes})$ in which
+`boxes` exactly equals the set of goal cells. The player's final position
+is irrelevant to the goal test — only box placement matters.
+
+**3. Actions / Operators** — Four operators: `Move-Up`, `Move-Down`,
+`Move-Left`, `Move-Right`. Applying a direction to a state:
+- moves the player one cell in that direction if the destination is free
+  floor (not a wall, no box), **or**
+- if the destination cell holds a box, pushes that box one further cell in
+  the same direction (and the player follows into the box's old cell),
+  **provided** the cell beyond the box is neither a wall nor another box,
+  **or**
+- is not generated at all (illegal) otherwise.
+
+Only one box can ever move per action, and boxes can only be pushed, never
+pulled.
+
+**4. State Representation** — A state is the pair
+`(player_position, frozenset_of_box_positions)`. Walls and goals are
+level constants shared by every state and are stored once on the problem
+object rather than repeated in every state, keeping states small and cheap
+to hash/compare — important because the search keeps a large `explored`
+set. A `frozenset` for the boxes (rather than a list/tuple) correctly
+encodes that boxes are interchangeable: two states with the same set of
+occupied cells are the *same* state regardless of "which" box is where.
+
+**5. Constraints**
+- The player may never move into or through a wall cell.
+- A box may never be pushed into a wall or into another box.
+- Boxes can only be **pushed** (never pulled), and only **one at a time**.
+- The number of boxes always equals the number of goal cells.
+- Some moves are irreversible in practice (e.g. pushing a box into a
+  corner with no goal can permanently block a solution) — the search
+  itself doesn't forbid this, it simply won't find a solution down that
+  branch.""")
+
+# ----------------------------------------------------------------------
+md(r"""## 3. PEAS Framework (Task 2.1)
+
+| PEAS element | Description |
+|---|---|
+| **Performance measure** | Reaching a goal state (all boxes on storage cells); among solutions, fewer moves (shorter push/move sequence) is better, as is lower search cost (nodes expanded, time, memory); illegal moves are never generated, so they cannot be scored against the agent. |
+| **Environment** | The warehouse grid: fixed walls, fixed goal cells, movable boxes, and the player. |
+| **Actuators** | Four directional move commands (Up / Down / Left / Right), which move the player and, when applicable, push a box. |
+| **Sensors** | Full knowledge of the grid: wall layout, goal cells, current box positions, and current player position. |
+
+**Environment properties:** fully observable (the entire grid is known at
+all times), deterministic (every action has exactly one outcome),
+static (the warehouse does not change unless the agent acts — no other
+agents or independent dynamics), discrete (finite cells, finite actions,
+discrete time steps), single-agent, and sequential (each action affects
+which actions/outcomes are available later, so the agent must plan ahead
+rather than react greedily).""")
+
+# ----------------------------------------------------------------------
+md(r"""## 4. Agent Architecture & Agent Program (Task 2.2 – 2.4)
+
+**Agent Architecture.** Because the environment is fully observable,
+deterministic and static, the agent does not need to cope with uncertainty
+— but it *does* need to look many steps ahead, since the goal is typically
+reached only after a long sequence of pushes, and a purely reactive agent
+cannot avoid dead-ends (e.g. pushing a box into a corner). This rules out
+a **simple reflex agent** and calls for a **goal-based agent**: it keeps
+an internal model of the world (player + box positions), formulates the
+goal (all boxes on goals), and uses **search** to construct a complete
+plan before acting. Where solution *quality* (path cost) also matters —
+as it does for our comparison — the same design extends naturally into a
+**utility-based agent**, using path length (and, for larger puzzles, a
+heuristic estimate of remaining cost) as the utility to be minimised.
+
+**Agent's Percept.** At each instant, the percept is the full grid state:
+wall layout, goal cells, current box positions, and the player's current
+position — sufficient for a complete internal state representation because
+the environment is fully observable.
+
+**Agent Program.** Since the environment is static, a plan computed once
+from the initial percept remains valid for the whole episode — no
+replanning is required (this is the classic AIMA "simple problem-solving
+agent" template):
+
+```text
+function SOKOBAN-AGENT(percept) returns an action
+    persistent: plan, an action sequence, initially empty
+                state, the agent's model of the current world state
+
+    state  <- UPDATE-STATE(state, percept)
+    if plan is empty then
+        goal    <- FORMULATE-GOAL(state)              # all boxes on goal cells
+        problem <- FORMULATE-PROBLEM(state, goal)      # as in Section 2
+        plan    <- SEARCH(problem)                     # BFS or DFS (Section 6)
+    action <- FIRST(plan)
+    plan   <- REST(plan)
+    return action
+```
+
+The `SEARCH` step is exactly what Sections 6–7 implement and compare.""")
+
+# ----------------------------------------------------------------------
+md(r"""## 5. Environment Representation (Task 2, continued)
+
+The environment is implemented as a `SokobanProblem` class built directly
+from a level's text grid:
+
+- `walls`, `goals` — `frozenset`s of `(row, col)` cells; fixed for the
+  level, computed once in `__init__`.
+- `init_state` — the initial `(player, boxes)` tuple described in Section 2.
+- `successors(state)` — generates every legal `(action, next_state)` pair
+  from a state, implementing the operators and constraints from Section 2.
+- `is_goal(state)` — true when `boxes == goals`.
+- `render(state)` — renders a state back into the human-readable grid
+  notation from Section 1, for printing and sanity-checking.
+
+This class is the *environment simulator*: given any state and an action,
+it can tell the agent exactly what the resulting state is, which is what
+lets BFS/DFS search forward from the initial state without ever touching a
+real warehouse.""")
+
+code(r"""from collections import deque
+import time
+
+# Four possible actions and the (row, col) delta each one applies
+DIRECTIONS = {
+    'Up':    (-1, 0),
+    'Down':  (1, 0),
+    'Left':  (0, -1),
+    'Right': (0, 1),
+}
+
+
+class SokobanProblem:
+    # A Sokoban level as a state-space search problem.
+
+    def __init__(self, grid_lines):
+        walls, goals, boxes = set(), set(), set()
+        player = None
+
+        for r, line in enumerate(grid_lines):
+            for c, ch in enumerate(line):
+                if ch == '#':
+                    walls.add((r, c))
+                elif ch == '.':
+                    goals.add((r, c))
+                elif ch == '$':
+                    boxes.add((r, c))
+                elif ch == '*':                       # box already on a goal
+                    boxes.add((r, c)); goals.add((r, c))
+                elif ch == '@':
+                    player = (r, c)
+                elif ch == '+':                       # player standing on a goal
+                    player = (r, c); goals.add((r, c))
+                # ' ' -> plain floor, nothing to record
+
+        if player is None:
+            raise ValueError("Grid has no player ('@' or '+').")
+        if len(boxes) != len(goals):
+            raise ValueError("Number of boxes must equal number of goals.")
+
+        self.walls = frozenset(walls)
+        self.goals = frozenset(goals)
+        self.height = len(grid_lines)
+        self.width = max(len(line) for line in grid_lines)
+        self.init_state = (player, frozenset(boxes))          # (Section 2, State Representation)
+
+    def initial_state(self):
+        return self.init_state
+
+    def is_goal(self, state):
+        _, boxes = state
+        return boxes == self.goals
+
+    def successors(self, state):
+        # Yield every legal (action, next_state) pair reachable in one move.
+        player, boxes = state
+        pr, pc = player
+        for action, (dr, dc) in DIRECTIONS.items():
+            nr, nc = pr + dr, pc + dc
+            if (nr, nc) in self.walls:
+                continue                                        # can't walk into a wall
+            if (nr, nc) in boxes:
+                br, bc = nr + dr, nc + dc                        # cell beyond the box
+                if (br, bc) in self.walls or (br, bc) in boxes:
+                    continue                                     # can't push into wall/box
+                new_boxes = frozenset((boxes - {(nr, nc)}) | {(br, bc)})
+                yield action, ((nr, nc), new_boxes)               # push
+            else:
+                yield action, ((nr, nc), boxes)                   # plain move
+
+    def render(self, state):
+        # Render a state back to the grid notation from Section 1.
+        player, boxes = state
+        rows = []
+        for r in range(self.height):
+            row = []
+            for c in range(self.width):
+                pos = (r, c)
+                if pos in self.walls:
+                    row.append('#')
+                elif pos == player:
+                    row.append('+' if pos in self.goals else '@')
+                elif pos in boxes:
+                    row.append('*' if pos in self.goals else '$')
+                elif pos in self.goals:
+                    row.append('.')
+                else:
+                    row.append(' ')
+            rows.append(''.join(row))
+        return '\n'.join(rows)
+
+print("SokobanProblem defined.")""")
+
+# ----------------------------------------------------------------------
+md(r"""### Test levels
+
+Three levels of increasing difficulty are used throughout the notebook —
+one trivial single-push level, one single-box level that needs several
+pushes and a change of direction, and one two-box level (a noticeably
+larger state space) to stress-test the search algorithms.""")
+
+code(r"""LEVEL_1 = ["#####",
+           "#@$.#",
+           "#####"]
+
+LEVEL_2 = ["#######",
+           "#.    #",
+           "# $   #",
+           "#  @  #",
+           "#     #",
+           "#######"]
+
+LEVEL_3 = ["#########",
+           "#   #   #",
+           "# $ # $ #",
+           "#  .#.  #",
+           "#   @   #",
+           "#########"]
+
+LEVELS = {
+    "Level 1 (1 box, single push)": LEVEL_1,
+    "Level 2 (1 box, multi-step)":  LEVEL_2,
+    "Level 3 (2 boxes)":            LEVEL_3,
+}
+
+for name, grid in LEVELS.items():
+    print(name)
+    print(SokobanProblem(grid).render(SokobanProblem(grid).init_state))
+    print()""")
+
+# ----------------------------------------------------------------------
+md(r"""## 6. Search Algorithms (Task 3 & 4)
+
+Both algorithms below share one **graph-search** template (goal-tested on
+removal from the frontier) and differ only in the frontier's
+discipline — BFS uses a FIFO queue, DFS a LIFO stack — which is why they
+are implemented as a single parameterised function.
+
+An `explored` set is essential here, not just an optimisation: Sokoban's
+state graph contains **cycles** (the player can walk back to a cell it
+already visited, or push a box back and forth), so a naive tree search
+without a visited-set could loop forever, especially for DFS. With the
+explored set, both searches are guaranteed to terminate on any finite
+grid (**completeness**).""")
+
+code(r"""def reconstruct_path(state, parent, action_taken):
+    # Walk parent pointers back to the root and reverse them into an action sequence.
+    actions = []
+    while parent[state] is not None:
+        actions.append(action_taken[state])
+        state = parent[state]
+    actions.reverse()
+    return actions
+
+
+def graph_search(problem, strategy='bfs'):
+    # Generic graph-search (goal test on removal from frontier).
+    # strategy='bfs' -> FIFO frontier (breadth-first, complete & optimal for unit-cost actions)
+    # strategy='dfs' -> LIFO frontier (depth-first, complete here thanks to the explored set,
+    #                   but NOT optimal)
+    start = problem.initial_state()
+    frontier = deque([start])
+    parent = {start: None}
+    action_taken = {}
+    explored = set()
+    nodes_expanded = 0
+    max_frontier_size = 1
+    t0 = time.time()
+
+    while frontier:
+        max_frontier_size = max(max_frontier_size, len(frontier))
+        state = frontier.popleft() if strategy == 'bfs' else frontier.pop()
+
+        if state in explored:
+            continue
+        explored.add(state)
+        nodes_expanded += 1
+
+        if problem.is_goal(state):
+            return {
+                'success': True,
+                'path': reconstruct_path(state, parent, action_taken),
+                'nodes_expanded': nodes_expanded,
+                'nodes_generated': len(parent),
+                'max_frontier_size': max_frontier_size,
+                'time_sec': time.time() - t0,
+            }
+
+        for action, next_state in problem.successors(state):
+            if next_state not in explored and next_state not in parent:
+                parent[next_state] = state
+                action_taken[next_state] = action
+                frontier.append(next_state)
+
+    return {'success': False, 'time_sec': time.time() - t0, 'nodes_expanded': nodes_expanded}
+
+
+def bfs(problem):
+    return graph_search(problem, strategy='bfs')
+
+
+def dfs(problem):
+    return graph_search(problem, strategy='dfs')
+
+
+def replay(problem, path):
+    # Re-apply an action sequence from the initial state; used as a correctness check.
+    state = problem.initial_state()
+    for a in path:
+        state = next(ns for act, ns in problem.successors(state) if act == a)
+    return state
+
+print("bfs(), dfs() and replay() defined.")""")
+
+# ----------------------------------------------------------------------
+md(r"""### Why uninformed search here — and where it stops being enough
+
+Task 4 invites us to judge whether uninformed search is the right tool.
+For the three levels used in this notebook, **BFS and DFS are entirely
+appropriate**: the state spaces are small enough to search exhaustively in
+milliseconds, and — more importantly for a search-methods assignment —
+comparing them head-to-head is exactly what surfaces the textbook
+completeness/optimality trade-offs (Section 8).
+
+That said, uninformed search does **not** scale. For a level with $F$
+free cells and $k$ boxes, the number of distinct box configurations is on
+the order of $\binom{F}{k}$, multiplied by up to $F$ player positions, with
+a branching factor of up to 4 per state. We can already see this growth
+between our own Level 2 (1 box) and Level 3 (2 boxes) below — one extra
+box is enough to multiply BFS's nodes-expanded by roughly 50×. Realistic
+Sokoban levels (e.g. the standard *Microban*/*XSokoban* benchmark sets)
+have far larger state spaces, where exhaustive BFS/DFS becomes infeasible
+in both time and memory. Practical Sokoban solvers instead use **informed
+search** (A\*/IDA\*) with an admissible heuristic — typically the sum of
+Manhattan distances from each box to its nearest goal, refined with
+box–goal bipartite matching and explicit **deadlock detection** (e.g. a
+box pushed into a corner with no goal is stuck forever, so that branch can
+be pruned outright). We do not implement A\* here, since the assignment's
+explicit deliverables are the BFS/DFS comparison, but it is the natural
+next step beyond this notebook.""")
+
+# ----------------------------------------------------------------------
+md(r"""## 7. Running the Search & Results (Task 3, 4 & 5)
+
+Each level is solved with both BFS and DFS. For every run we record
+whether it succeeded, the solution length (moves), nodes expanded, nodes
+generated, the largest the frontier ever grew, and wall-clock time — then
+sanity-check every solution by **replaying** it from the initial state and
+confirming it truly reaches a goal state.""")
+
+code(r"""import pandas as pd
+
+results_rows = []
+solved = {}   # (level_name, strategy) -> (problem, final_state, result)
+
+for name, grid in LEVELS.items():
+    problem = SokobanProblem(grid)
+    print("=" * 64)
+    print(name)
+    print(problem.render(problem.initial_state()))
+    for strategy in ("bfs", "dfs"):
+        result = graph_search(problem, strategy)
+        if result['success']:
+            final_state = replay(problem, result['path'])
+            assert problem.is_goal(final_state), "replay failed to reach the goal!"
+            solved[(name, strategy)] = (problem, final_state, result)
+            results_rows.append({
+                "Level": name,
+                "Algorithm": strategy.upper(),
+                "Solved": True,
+                "Solution Length": len(result['path']),
+                "Nodes Expanded": result['nodes_expanded'],
+                "Nodes Generated": result['nodes_generated'],
+                "Max Frontier Size": result['max_frontier_size'],
+                "Time (ms)": round(result['time_sec'] * 1000, 3),
+            })
+            print(f"  {strategy.upper():3s}: {len(result['path']):3d} moves | "
+                  f"expanded {result['nodes_expanded']:5d} | "
+                  f"generated {result['nodes_generated']:5d} | "
+                  f"max frontier {result['max_frontier_size']:4d} | "
+                  f"{result['time_sec']*1000:7.3f} ms")
+        else:
+            results_rows.append({
+                "Level": name, "Algorithm": strategy.upper(), "Solved": False,
+                "Solution Length": None, "Nodes Expanded": result['nodes_expanded'],
+                "Nodes Generated": None, "Max Frontier Size": None,
+                "Time (ms)": round(result['time_sec'] * 1000, 3),
+            })
+            print(f"  {strategy.upper()}: NO SOLUTION FOUND")
+    print()
+
+results_df = pd.DataFrame(results_rows)
+results_df""")
+
+# ----------------------------------------------------------------------
+md(r"""### Visualising a solution
+
+As a concrete example, here is **Level 3** (the hardest test case) before
+and after BFS's solution is applied — every box has moved from its `$`
+starting cell onto a goal.""")
+
+code(r"""import matplotlib.pyplot as plt
+import matplotlib.patches as patches
+
+def plot_state(problem, state, ax=None, title=""):
+    own_fig = ax is None
+    if own_fig:
+        _, ax = plt.subplots(figsize=(problem.width * 0.55, problem.height * 0.55))
+    player, boxes = state
+    for r in range(problem.height):
+        for c in range(problem.width):
+            pos = (r, c)
+            x, y = c, problem.height - 1 - r          # flip so row 0 renders on top
+            face = '#333333' if pos in problem.walls else '#f5f5f5'
+            ax.add_patch(patches.Rectangle((x, y), 1, 1, facecolor=face,
+                                            edgecolor='#bbbbbb', linewidth=0.5))
+            if pos in problem.goals and pos not in problem.walls:
+                ax.add_patch(patches.Circle((x + 0.5, y + 0.5), 0.10,
+                                             facecolor='#e74c3c', zorder=2))
+            if pos in boxes:
+                face = '#27ae60' if pos in problem.goals else '#d4a017'
+                ax.add_patch(patches.Rectangle((x + 0.12, y + 0.12), 0.76, 0.76,
+                                                facecolor=face, edgecolor='black', zorder=3))
+            if pos == player:
+                ax.add_patch(patches.Circle((x + 0.5, y + 0.5), 0.28,
+                                             facecolor='#2980b9', edgecolor='black', zorder=4))
+    ax.set_xlim(0, problem.width); ax.set_ylim(0, problem.height)
+    ax.set_aspect('equal'); ax.axis('off'); ax.set_title(title, fontsize=10)
+    if own_fig:
+        plt.tight_layout(); plt.show()
+
+
+problem3, final3, result3 = solved[("Level 3 (2 boxes)", "bfs")]
+fig, axes = plt.subplots(1, 2, figsize=(8, 4.2))
+plot_state(problem3, problem3.initial_state(), ax=axes[0], title="Initial state")
+plot_state(problem3, final3, ax=axes[1], title=f"Goal reached — BFS, {len(result3['path'])} moves")
+plt.tight_layout()
+plt.show()""")
+
+# ----------------------------------------------------------------------
+md(r"""## 8. Algorithmic Comparison (Task 5)""")
+
+code(r"""import numpy as np
+
+pivot_nodes = results_df.pivot(index="Level", columns="Algorithm", values="Nodes Expanded")
+pivot_time  = results_df.pivot(index="Level", columns="Algorithm", values="Time (ms)")
+pivot_len   = results_df.pivot(index="Level", columns="Algorithm", values="Solution Length")
+order = list(LEVELS.keys())
+pivot_nodes, pivot_time, pivot_len = pivot_nodes.loc[order], pivot_time.loc[order], pivot_len.loc[order]
+
+fig, axes = plt.subplots(1, 3, figsize=(15, 4))
+for ax, pivot, title, ylabel in [
+    (axes[0], pivot_nodes, "Nodes Expanded", "Nodes"),
+    (axes[1], pivot_time,  "Time Taken",     "Milliseconds"),
+    (axes[2], pivot_len,   "Solution Length", "Moves"),
+]:
+    pivot.plot(kind="bar", ax=ax, color=["#2980b9", "#e67e22"], legend=(ax is axes[0]))
+    ax.set_title(title); ax.set_ylabel(ylabel); ax.set_xlabel("")
+    ax.tick_params(axis='x', rotation=15)
+plt.tight_layout()
+plt.show()""")
+
+md(r"""**Observations from the results above** (BFS = blue, DFS = orange):
+
+- **Optimality.** BFS finds the *shortest possible* solution on every
+  level, because it explores the state space in order of increasing
+  depth. DFS has no such guarantee: on Level 2 it returns a solution
+  **more than 6× longer** than BFS's, and on Level 3 more than **2×
+  longer** — both are valid (a replayed solution genuinely reaches the
+  goal), just far from optimal.
+- **Search cost is unpredictable for DFS.** On Level 2, DFS actually
+  expands *more* nodes than BFS (it dives down a long unproductive branch
+  before backtracking) — so here it is worse on *both* solution quality
+  and search cost. On Level 3, the opposite happens: DFS happens to expand
+  far fewer nodes than BFS because it stumbles onto *a* solution quickly,
+  long before BFS has finished exploring shallower depths.
+  This inconsistency is expected: DFS's performance depends entirely on
+  the (here, fixed `Up → Down → Left → Right`) order in which successors
+  are generated, not on any notion of "closer to the goal".
+- **BFS's cost grows quickly with state-space size.** Going from Level 2
+  (1 box) to Level 3 (2 boxes) — adding just one more box — multiplies
+  BFS's nodes expanded by roughly **50×** (50 → 2,604) and its peak
+  frontier size by over **17×** (28 → 489) — a direct, visible
+  illustration of why breadth-first search's $O(b^d)$ memory requirement
+  becomes prohibitive for larger puzzles.
+- **Both are complete** on these levels (they always find *a* solution
+  when one exists), because the graph-search template's `explored` set
+  prevents the infinite loops that Sokoban's cyclic state space would
+  otherwise allow.
+
+**Conclusion.** BFS is the better default when solution quality matters
+and the state space is small enough to fit in memory — exactly the
+trade-off theory predicts. DFS can occasionally be cheaper, but that is
+incidental to the order of exploration rather than a reliable property,
+and its solutions are consistently far from optimal. Neither uninformed
+strategy would scale to realistic Sokoban levels (Section 6), where
+informed search with a good heuristic is the practical choice.""")
+
+nb['cells'] = cells
+nb['metadata'] = {
+    "kernelspec": {"display_name": "Python 3", "language": "python", "name": "python3"},
+    "language_info": {"name": "python", "version": "3.12"},
+}
+
+with open('sokoban_cia1.ipynb', 'w') as f:
+    nbf.write(nb, f)
+
+print("Notebook written with", len(cells), "cells.")
+================================================================================
+
+
+================================================================================
+FILE [32/44]: compare.py
+Full Path : /Users/dazzelr/PycharmProjects/compare.py
+Stats     : 17 lines | 425 bytes
+--------------------------------------------------------------------------------
+import numpy as np
+import pandas as pd
+
+class_A = np.array([70, 72, 75, 78, 80])
+class_B = np.array([50, 65, 75, 90, 95])
+print("Class A Average:", np.mean(class_A))
+print("Class B Average:", np.mean(class_B))
+print("\nClass A Standard Deviation:", np.std(class_A))
+print("Class B Standard Deviation:", np.std(class_B))
+
+
+csv = pd.read_csv("Numerical.csv")
+
+array = np.array(csv["f1"])
+
+print(array.mean())
+print(array.std())
+================================================================================
+
+
+================================================================================
+FILE [33/44]: first_app.py
+Full Path : /Users/dazzelr/PycharmProjects/first_app.py
+Stats     : 18 lines | 579 bytes
+--------------------------------------------------------------------------------
+import streamlit as st
+
+
+st.title('Student Result Application', text_alignment='center')
+st.header('Enter Details')
+st.text("Enter Name and Marks")
+name = st.text_input('Enter Name: ')
+marks = st.number_input('Enter Marks: ', min_value=0, max_value=100)
+button = st.button('Check Result', type='primary')
+if button:
+    if name == "":
+        st.error("Enter Name and Marks")
+    else:
+        st.write("Student Name", name)
+        if marks > 40:
+            st.success(f'Your mark is {marks}, You Passed')
+        else:
+            st.error(f'Your mark is {marks}, You Failed')
+================================================================================
+
+
+================================================================================
+FILE [34/44]: flasktry.py
+Full Path : /Users/dazzelr/PycharmProjects/flasktry.py
+Stats     : 37 lines | 641 bytes
+--------------------------------------------------------------------------------
+from flask import Flask
+
+app = Flask(__name__)
+
+
+@app.route("/")
+def home():
+    return "Welcome to Student Portal"
+
+
+@app.route("/about")
+def about():
+    return "This is the About Page"
+
+
+@app.route("/courses")
+def courses():
+    return "Courses: BCA, BSc, MCA, MSc"
+
+
+@app.route("/contact")
+def contact():
+    return "Email: ts@example.com"
+
+
+@app.route("/profile")
+def profile():
+    return "Student Name: Tanishq Saini | Course: BCA | Contact: ts@example.com"
+
+
+@app.route("/subjects")
+def subjects():
+    return "Subjects: Python, Java, Database Management, Artificial Intelligence"
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
+================================================================================
+
+
+================================================================================
+FILE [35/44]: input.py
+Full Path : /Users/dazzelr/PycharmProjects/input.py
+Stats     : 26 lines | 1,059 bytes
+--------------------------------------------------------------------------------
+import streamlit as st
+from datetime import datetime
+
+
+st.title("Student Registration System", text_alignment='center')
+name = st.text_input("Enter Student Name")
+age = st.number_input("Enter Age")
+course = st.text_input("Enter Course")
+year = st.datetime_input(
+    "Enter Year",value='now', min_value=datetime(2020, 1, 1), max_value='now')
+email = st.text_input("Enter Email")
+gender = st.selectbox("Select Gender", ["Male", "Female", "Other"])
+skills = st.text_area("Enter Skills")
+confirmation = st.checkbox("Read all the tos and privacy policy")
+st.chat_input("Enter Student Name")
+button = st.button("Submit")
+if confirmation and button:
+    if name != '' and age != '' and course != '' and email != '' and gender != '' and skills != '':
+        st.info(f"Student Name: {name}")
+        st.info(f"Student Age: {age}")
+        st.info(f"Student Course: {course}")
+        st.info(f"Student Email: {email}")
+        st.info(f"Student Gender: {gender}")
+        st.info(f"Student Skills: {skills}")
+    else:
+        st.error("Please enter a valid input")
+================================================================================
+
+
+================================================================================
+FILE [36/44]: numpaycsv.py
+Full Path : /Users/dazzelr/PycharmProjects/numpaycsv.py
+Stats     : 10 lines | 197 bytes
+--------------------------------------------------------------------------------
+import pandas as pd
+data = {
+    "Students": ["Tanishq", "Nishita"],
+    "Marks": [98, 78],
+    "Attandance": [85, 90]
+}
+
+df = pd.DataFrame(data)
+df.to_csv("students.csv")
+print("CSV File Created")
+================================================================================
+
+
+================================================================================
+FILE [37/44]: numpysolve.py
+Full Path : /Users/dazzelr/PycharmProjects/numpysolve.py
+Stats     : 22 lines | 403 bytes
+--------------------------------------------------------------------------------
+import numpy as np
+
+marks = np.array([10,20,30,40])
+
+print(marks+5)
+
+internal = np.array([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15])
+external = np.array([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15])
+print(internal + external)
+
+print(marks - 2)
+print(marks * 2)
+
+print(np.sum(marks))
+print(np.min(marks))
+print(np.max(marks))
+print(np.mean(marks))
+print(np.median(marks))
+print(np.std(marks))
+print(np.var(marks))
+
+
+================================================================================
+
+
+================================================================================
+FILE [38/44]: pandscheck.py
+Full Path : /Users/dazzelr/PycharmProjects/pandscheck.py
+Stats     : 19 lines | 464 bytes
+--------------------------------------------------------------------------------
+import pandas as pd
+
+data = {
+    "Students" : ["Amit", "Tanishq", "Nishita"],
+    "Marks": [30, 100, 90],
+    "Attendance": [81, 100, 75],
+}
+
+df = pd.DataFrame(data)
+# print(df["Students"])
+# print(df["Attendance"].mean())
+# print(df["Marks"].max())
+# new_df = df[["Students", "Marks"]]
+# print(new_df)
+
+print(df[["Students","Attendance"]])
+print(df[df["Attendance"] > 80])
+print(df[df["Attendance"] > 80])
+print(df[df["Attendance"] > 85] & df[df["Marks"] > 75])
+================================================================================
+
+
+================================================================================
+FILE [39/44]: readcsv.py
+Full Path : /Users/dazzelr/PycharmProjects/readcsv.py
+Stats     : 32 lines | 516 bytes
+--------------------------------------------------------------------------------
+import pandas as pd
+df = pd.read_csv("students.csv")
+
+
+def checkAttadance(att):
+    if att <= 80:
+        return True
+    return None
+
+def addMakrs(marks):
+    marks += 5
+    return marks
+
+
+df["Check"] = df["Attandance"].apply(checkAttadance)
+print(df)
+
+newdf = df[df["Check"] == True]
+newdf.to_csv("students1.csv")
+
+
+df["Bonus_marks"] = df["Marks"].apply(addMakrs)
+
+print(df)
+
+avgmarks = df["Bonus_marks"].mean()
+
+newdf1 = df[df["Bonus_marks"] > avgmarks]
+
+newdf1.to_csv("students3.csv")
+
+df.to_csv("students2.csv")
+================================================================================
+
+
+================================================================================
+FILE [40/44]: sorting.py
+Full Path : /Users/dazzelr/PycharmProjects/sorting.py
+Stats     : 7 lines | 135 bytes
+--------------------------------------------------------------------------------
+import numpy as np
+
+marks = np.array([78, 92, 65, 85, 74])
+
+print(np.sort(marks))
+print(np.sort(marks)[::-1])
+print(np.argsort(marks))
+================================================================================
+
+
+================================================================================
+FILE [41/44]: xmltree.py
+Full Path : /Users/dazzelr/PycharmProjects/xmltree.py
+Stats     : 20 lines | 446 bytes
+--------------------------------------------------------------------------------
+import os
+import xml.etree.ElementTree as ET
+
+root = ET.Element('student')
+student_date = [
+    ("tanishq", "tanishq@example.com"),
+    ("nishita", "nishita@example.com"),
+    ("ashish", "ashish@example.com"),
+]
+
+for name, email in student_date:
+    student = ET.SubElement(root, 'student')
+    student.set('name', name)
+
+    emailint =ET.SubElement(student, 'email')
+    emailint.text = email
+
+
+tree = ET.ElementTree(root)
+tree.write("test.xml")
+================================================================================
+
+
+
+################################################################################
+# PART 3: Subdirectory Programs (Streamlit & TestFile)
+################################################################################
+
+================================================================================
+FILE [42/44]: Streamlit/CreateData.py
+Full Path : /Users/dazzelr/PycharmProjects/Streamlit/CreateData.py
+Stats     : 233 lines | 5,322 bytes
+--------------------------------------------------------------------------------
+import streamlit as st
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# -----------------------------
+# Page Configuration
+# -----------------------------
+st.set_page_config(
+    page_title="Student Performance Analyzer",
+    layout="wide"
+)
+
+st.title("Student Performance Analyzer")
+st.write("Upload a CSV file to analyze student marks.")
+
+# -----------------------------
+# Upload CSV
+# -----------------------------
+uploaded_file = st.file_uploader(
+    "Upload CSV",
+    type=["csv"]
+)
+
+if uploaded_file is not None:
+
+    # Read CSV
+    df = pd.read_csv(uploaded_file)
+
+    st.success("CSV uploaded successfully!")
+
+    # -----------------------------
+    # Display Dataset
+    # -----------------------------
+    st.subheader("Dataset")
+    st.dataframe(df, use_container_width=True)
+
+    # First column is assumed to be Student Name
+    student_column = df.columns[0]
+
+    # Find numeric subject columns
+    subject_columns = df.select_dtypes(
+        include="number"
+    ).columns.tolist()
+
+    if len(subject_columns) == 0:
+        st.error("No numeric subject columns found in the CSV.")
+        st.stop()
+
+    # -----------------------------
+    # Calculate Student Average
+    # -----------------------------
+    df["Average"] = df[subject_columns].mean(axis=1)
+
+    # -----------------------------
+    # Show Summary
+    # -----------------------------
+    st.subheader("Summary")
+
+    col1, col2, col3, col4 = st.columns(4)
+
+    col1.metric("Total Students", len(df))
+    col2.metric("Total Subjects", len(subject_columns))
+    col3.metric("Class Average", f"{df['Average'].mean():.2f}")
+    col4.metric("Highest Average", f"{df['Average'].max():.2f}")
+
+    # -----------------------------
+    # Select Student
+    # -----------------------------
+    st.subheader("Student Details")
+
+    selected_student = st.selectbox(
+        "Select Student",
+        df[student_column].tolist()
+    )
+
+    student_data = df[
+        df[student_column] == selected_student
+    ].iloc[0]
+
+    # -----------------------------
+    # Display Individual Marks
+    # -----------------------------
+    st.write(f"### {selected_student}")
+
+    marks = {}
+
+    for subject in subject_columns:
+        marks[subject] = student_data[subject]
+
+    marks_df = pd.DataFrame(
+        list(marks.items()),
+        columns=["Subject", "Marks"]
+    )
+
+    st.dataframe(
+        marks_df,
+        use_container_width=True,
+        hide_index=True
+    )
+
+    # -----------------------------
+    # PASS / FAIL
+    # -----------------------------
+    # Passing mark = 40
+    passing_marks = 40
+
+    failed_subjects = [
+        subject
+        for subject in subject_columns
+        if student_data[subject] < passing_marks
+    ]
+
+    if len(failed_subjects) == 0:
+        st.success(
+            f"PASS — {selected_student} passed all subjects."
+        )
+    else:
+        st.error(
+            f"FAIL — {selected_student} failed in: "
+            + ", ".join(failed_subjects)
+        )
+
+    # -----------------------------
+    # Student Performance Chart
+    # -----------------------------
+    st.subheader("Student Performance Chart")
+
+    fig, ax = plt.subplots()
+
+    ax.bar(
+        subject_columns,
+        [student_data[s] for s in subject_columns]
+    )
+
+    ax.axhline(
+        passing_marks,
+        linestyle="--",
+        label="Pass Mark"
+    )
+
+    ax.set_ylabel("Marks")
+    ax.set_xlabel("Subjects")
+    ax.set_title(f"{selected_student}'s Performance")
+
+    ax.legend()
+
+    plt.xticks(rotation=30)
+    plt.tight_layout()
+
+    st.pyplot(fig)
+
+    # -----------------------------
+    # Select Subject
+    # -----------------------------
+    st.subheader("Subject Analysis")
+
+    selected_subject = st.selectbox(
+        "Select Subject",
+        subject_columns
+    )
+
+    # -----------------------------
+    # Subject-wise Statistics
+    # -----------------------------
+    st.write(f"### {selected_subject} Statistics")
+
+    subject_marks = df[selected_subject]
+
+    col1, col2, col3, col4 = st.columns(4)
+
+    col1.metric(
+        "Average",
+        f"{subject_marks.mean():.2f}"
+    )
+
+    col2.metric(
+        "Highest",
+        f"{subject_marks.max():.0f}"
+    )
+
+    col3.metric(
+        "Lowest",
+        f"{subject_marks.min():.0f}"
+    )
+
+    col4.metric(
+        "Pass %",
+        f"{(subject_marks >= passing_marks).mean() * 100:.1f}%"
+    )
+
+    # -----------------------------
+    # Compare All Students
+    # -----------------------------
+    st.subheader("Compare All Students")
+
+    comparison_df = df[
+        [student_column] + subject_columns + ["Average"]
+    ].copy()
+
+    comparison_df = comparison_df.sort_values(
+        "Average",
+        ascending=False
+    )
+
+    st.dataframe(
+        comparison_df,
+        use_container_width=True,
+        hide_index=True
+    )
+
+    # -----------------------------
+    # Average Comparison Chart
+    # -----------------------------
+    st.write("### Student Average Comparison")
+
+    fig2, ax2 = plt.subplots()
+
+    ax2.bar(
+        comparison_df[student_column],
+        comparison_df["Average"]
+    )
+
+    ax2.set_xlabel("Students")
+    ax2.set_ylabel("Average Marks")
+    ax2.set_title("Average Marks of All Students")
+
+    plt.xticks(rotation=30)
+    plt.tight_layout()
+
+    st.pyplot(fig2)
+
+else:
+    st.info("Please upload a CSV file to begin.")
+================================================================================
+
+
+================================================================================
+FILE [43/44]: Streamlit/better.py
+Full Path : /Users/dazzelr/PycharmProjects/Streamlit/better.py
+Stats     : 595 lines | 11,207 bytes
+--------------------------------------------------------------------------------
+import streamlit as st
+import pandas as pd
+import plotly.express as px
+
+# --------------------------------------------------
+# PAGE CONFIG
+# --------------------------------------------------
+
+st.set_page_config(
+    page_title="Student Performance Analyzer",
+    layout="wide"
+)
+
+# --------------------------------------------------
+# HEADER
+# --------------------------------------------------
+
+st.title("Student Performance Analyzer")
+st.caption("Interactive student marks and performance analysis")
+
+# --------------------------------------------------
+# SIDEBAR
+# --------------------------------------------------
+
+with st.sidebar:
+
+    st.header("Upload Dataset")
+
+    uploaded_file = st.file_uploader(
+        "Upload CSV file",
+        type=["csv"]
+    )
+
+    st.divider()
+
+    st.write("Settings")
+
+    passing_marks = st.slider(
+        "Passing Marks",
+        min_value=0,
+        max_value=100,
+        value=40
+    )
+
+
+# --------------------------------------------------
+# NO FILE
+# --------------------------------------------------
+
+if uploaded_file is None:
+
+    st.info("Upload a CSV file from the sidebar to get started.")
+
+    st.markdown("""
+    ### Expected CSV format
+
+    Your CSV should look something like:
+
+    | Student | Math | Python | DBMS | AI |
+    |---|---:|---:|---:|---:|
+    | Rahul | 78 | 85 | 72 | 90 |
+    | Priya | 65 | 74 | 80 | 76 |
+    | Aman | 35 | 42 | 38 | 45 |
+    | Sneha | 92 | 89 | 95 | 91 |
+
+    **First column:** Student name  
+    **Other numeric columns:** Subjects
+    """)
+
+    st.stop()
+
+
+# --------------------------------------------------
+# LOAD DATA
+# --------------------------------------------------
+
+try:
+
+    df = pd.read_csv(uploaded_file)
+
+except Exception as e:
+
+    st.error(f"Unable to read CSV: {e}")
+    st.stop()
+
+
+# --------------------------------------------------
+# BASIC VALIDATION
+# --------------------------------------------------
+
+if df.empty:
+
+    st.error("The uploaded CSV is empty.")
+    st.stop()
+
+
+student_column = df.columns[0]
+
+subject_columns = df.select_dtypes(
+    include="number"
+).columns.tolist()
+
+
+if not subject_columns:
+
+    st.error("No numeric subject columns were found.")
+
+    st.stop()
+
+
+# --------------------------------------------------
+# CALCULATIONS
+# --------------------------------------------------
+
+df["Average"] = df[subject_columns].mean(axis=1)
+
+df["Total"] = df[subject_columns].sum(axis=1)
+
+df["Passed Subjects"] = (
+    df[subject_columns] >= passing_marks
+).sum(axis=1)
+
+df["Failed Subjects"] = (
+    df[subject_columns] < passing_marks
+).sum(axis=1)
+
+df["Result"] = df["Failed Subjects"].apply(
+    lambda x: "PASS" if x == 0 else "FAIL"
+)
+
+df["Rank"] = (
+    df["Average"]
+    .rank(method="min", ascending=False)
+    .astype(int)
+)
+
+
+# --------------------------------------------------
+# CLASS OVERVIEW
+# --------------------------------------------------
+
+st.subheader("Class Overview")
+
+col1, col2, col3, col4, col5 = st.columns(5)
+
+col1.metric(
+    "Students",
+    len(df)
+)
+
+col2.metric(
+    "Subjects",
+    len(subject_columns)
+)
+
+col3.metric(
+    "Class Average",
+    f"{df['Average'].mean():.2f}"
+)
+
+col4.metric(
+    "Passed",
+    int((df["Result"] == "PASS").sum())
+)
+
+col5.metric(
+    "Failed",
+    int((df["Result"] == "FAIL").sum())
+)
+
+
+# --------------------------------------------------
+# TABS
+# --------------------------------------------------
+
+tab1, tab2, tab3, tab4 = st.tabs([
+    "Dataset",
+    "Student Analysis",
+    "Subject Analysis",
+    "Class Comparison"
+])
+
+
+# ==================================================
+# TAB 1 — DATASET
+# ==================================================
+
+with tab1:
+
+    st.subheader("Dataset")
+
+    search = st.text_input(
+        "Search Student",
+        placeholder="Type a student name..."
+    )
+
+    filtered_df = df.copy()
+
+    if search:
+
+        filtered_df = filtered_df[
+            filtered_df[student_column]
+            .astype(str)
+            .str.contains(
+                search,
+                case=False,
+                na=False
+            )
+        ]
+
+    result_filter = st.multiselect(
+        "Filter by Result",
+        ["PASS", "FAIL"],
+        default=["PASS", "FAIL"]
+    )
+
+    if result_filter:
+
+        filtered_df = filtered_df[
+            filtered_df["Result"].isin(result_filter)
+        ]
+
+    st.dataframe(
+        filtered_df,
+        use_container_width=True,
+        hide_index=True
+    )
+
+    st.write(
+        f"Showing {len(filtered_df)} students"
+    )
+
+    csv = df.to_csv(index=False)
+
+    st.download_button(
+        "Download Processed Dataset",
+        data=csv,
+        file_name="student_analysis.csv",
+        mime="text/csv"
+    )
+
+
+# ==================================================
+# TAB 2 — STUDENT ANALYSIS
+# ==================================================
+
+with tab2:
+
+    st.subheader("Individual Student Analysis")
+
+    selected_student = st.selectbox(
+        "Select Student",
+        df[student_column].tolist()
+    )
+
+    student = df[
+        df[student_column] == selected_student
+    ].iloc[0]
+
+    # Student metrics
+
+    col1, col2, col3, col4 = st.columns(4)
+
+    col1.metric(
+        "Average",
+        f"{student['Average']:.2f}"
+    )
+
+    col2.metric(
+        "Total Marks",
+        f"{student['Total']:.0f}"
+    )
+
+    col3.metric(
+        "Rank",
+        f"#{student['Rank']}"
+    )
+
+    col4.metric(
+        "Result",
+        student["Result"]
+    )
+
+    # Result
+
+    if student["Result"] == "PASS":
+
+        st.success(
+            f"{selected_student} passed all subjects."
+        )
+
+    else:
+
+        failed = [
+            subject
+            for subject in subject_columns
+            if student[subject] < passing_marks
+        ]
+
+        st.error(
+            f"{selected_student} failed in: "
+            + ", ".join(failed)
+        )
+
+    # Individual marks
+
+    st.write("### Individual Marks")
+
+    marks_df = pd.DataFrame({
+        "Subject": subject_columns,
+        "Marks": [
+            student[subject]
+            for subject in subject_columns
+        ]
+    })
+
+    st.dataframe(
+        marks_df,
+        use_container_width=True,
+        hide_index=True
+    )
+
+    # Performance chart
+
+    st.write("### Performance")
+
+    fig = px.bar(
+        marks_df,
+        x="Subject",
+        y="Marks",
+        title=f"{selected_student}'s Subject Performance",
+        text="Marks"
+    )
+
+    fig.add_hline(
+        y=passing_marks,
+        line_dash="dash",
+        annotation_text="Passing Marks"
+    )
+
+    fig.update_layout(
+        yaxis_range=[0, 100]
+    )
+
+    st.plotly_chart(
+        fig,
+        use_container_width=True
+    )
+
+    # Radar chart
+
+    st.write("### Performance Profile")
+
+    radar = px.line_polar(
+        marks_df,
+        r="Marks",
+        theta="Subject",
+        line_close=True,
+        range_r=[0, 100]
+    )
+
+    radar.update_traces(
+        fill="toself"
+    )
+
+    st.plotly_chart(
+        radar,
+        use_container_width=True
+    )
+
+
+# ==================================================
+# TAB 3 — SUBJECT ANALYSIS
+# ==================================================
+
+with tab3:
+
+    st.subheader("Subject-wise Analysis")
+
+    selected_subject = st.selectbox(
+        "Select Subject",
+        subject_columns,
+        key="subject_selector"
+    )
+
+    subject_marks = df[selected_subject]
+
+    # Subject metrics
+
+    col1, col2, col3, col4 = st.columns(4)
+
+    col1.metric(
+        "Average",
+        f"{subject_marks.mean():.2f}"
+    )
+
+    col2.metric(
+        "Highest",
+        f"{subject_marks.max():.0f}"
+    )
+
+    col3.metric(
+        "Lowest",
+        f"{subject_marks.min():.0f}"
+    )
+
+    pass_percentage = (
+        subject_marks >= passing_marks
+    ).mean() * 100
+
+    col4.metric(
+        "Pass Percentage",
+        f"{pass_percentage:.1f}%"
+    )
+
+    # Subject performance
+
+    subject_df = pd.DataFrame({
+        "Student": df[student_column],
+        "Marks": df[selected_subject]
+    })
+
+    subject_df = subject_df.sort_values(
+        "Marks",
+        ascending=False
+    )
+
+    fig = px.bar(
+        subject_df,
+        x="Student",
+        y="Marks",
+        title=f"{selected_subject} Performance",
+        text="Marks"
+    )
+
+    fig.add_hline(
+        y=passing_marks,
+        line_dash="dash",
+        annotation_text="Passing Marks"
+    )
+
+    fig.update_layout(
+        yaxis_range=[0, 100]
+    )
+
+    st.plotly_chart(
+        fig,
+        use_container_width=True
+    )
+
+    # Statistics
+
+    st.write("### Statistics")
+
+    statistics = pd.DataFrame({
+        "Statistic": [
+            "Average",
+            "Median",
+            "Highest",
+            "Lowest",
+            "Standard Deviation",
+            "Pass Percentage"
+        ],
+
+        "Value": [
+            subject_marks.mean(),
+            subject_marks.median(),
+            subject_marks.max(),
+            subject_marks.min(),
+            subject_marks.std(),
+            pass_percentage
+        ]
+    })
+
+    st.dataframe(
+        statistics,
+        use_container_width=True,
+        hide_index=True
+    )
+
+
+# ==================================================
+# TAB 4 — CLASS COMPARISON
+# ==================================================
+
+with tab4:
+
+    st.subheader("Compare All Students")
+
+    ranking = df[
+        [
+            student_column,
+            "Total",
+            "Average",
+            "Passed Subjects",
+            "Failed Subjects",
+            "Result",
+            "Rank"
+        ]
+    ].sort_values(
+        "Rank"
+    )
+
+    st.dataframe(
+        ranking,
+        use_container_width=True,
+        hide_index=True
+    )
+
+    # Average comparison
+
+    st.write("### Average Comparison")
+
+    comparison = df[
+        [student_column, "Average"]
+    ].sort_values(
+        "Average",
+        ascending=False
+    )
+
+    fig = px.bar(
+        comparison,
+        x=student_column,
+        y="Average",
+        text="Average",
+        title="Student Average Comparison"
+    )
+
+    fig.add_hline(
+        y=df["Average"].mean(),
+        line_dash="dash",
+        annotation_text="Class Average"
+    )
+
+    fig.update_layout(
+        yaxis_range=[0, 100]
+    )
+
+    st.plotly_chart(
+        fig,
+        use_container_width=True
+    )
+
+    # Pass / Fail
+
+    st.write("### Pass / Fail Distribution")
+
+    result_count = df["Result"].value_counts()
+
+    fig2 = px.pie(
+        values=result_count.values,
+        names=result_count.index,
+        title="Student Results",
+        hole=0.4
+    )
+
+    st.plotly_chart(
+        fig2,
+        use_container_width=True
+    )
+
+    # Subject comparison
+
+    st.write("### Subject Average Comparison")
+
+    subject_average = pd.DataFrame({
+        "Subject": subject_columns,
+        "Average": [
+            df[subject].mean()
+            for subject in subject_columns
+        ]
+    })
+
+    fig3 = px.bar(
+        subject_average,
+        x="Subject",
+        y="Average",
+        text="Average",
+        title="Average Marks by Subject"
+    )
+
+    fig3.add_hline(
+        y=passing_marks,
+        line_dash="dash",
+        annotation_text="Passing Marks"
+    )
+
+    fig3.update_layout(
+        yaxis_range=[0, 100]
+    )
+
+    st.plotly_chart(
+        fig3,
+        use_container_width=True
+    )
+================================================================================
+
+
+================================================================================
+FILE [44/44]: TestFile/Python Files/pip.py
+Full Path : /Users/dazzelr/PycharmProjects/TestFile/Python Files/pip.py
+Stats     : 0 lines | 0 bytes
+--------------------------------------------------------------------------------
+
+================================================================================
+
+
