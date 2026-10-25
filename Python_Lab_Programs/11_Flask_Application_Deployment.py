@@ -1,3 +1,41 @@
+# ═══════════════════════════════════════════════════════════════
+#  Flask Student Portal — Deployment Documentation
+# ═══════════════════════════════════════════════════════════════
+#
+#  LOCAL EXECUTION
+#  ───────────────
+#  1. Install dependencies:
+#       pip install flask
+#  2. Run the application:
+#       python 11_Flask_Application_Deployment.py
+#  3. Open in browser:
+#       http://127.0.0.1:5001
+#
+#  PRODUCTION DEPLOYMENT (Render / PythonAnywhere)
+#  ────────────────────────────────────────────────
+#  A. Create requirements.txt:
+#       flask
+#       gunicorn
+#
+#  B. Create a Procfile (for Render / Heroku):
+#       web: gunicorn 11_Flask_Application_Deployment:app
+#
+#  C. Deploy on Render (https://render.com):
+#       - Create a new Web Service → connect your GitHub repo
+#       - Build command:  pip install -r requirements.txt
+#       - Start command:  gunicorn 11_Flask_Application_Deployment:app
+#       - The service URL will be: https://<app-name>.onrender.com
+#
+#  D. Deploy on PythonAnywhere (https://www.pythonanywhere.com):
+#       - Upload files → open a Bash console
+#       - pip install flask
+#       - In the Web tab, set the WSGI file to import `app`
+#         from 11_Flask_Application_Deployment
+#       - The URL will be: https://<username>.pythonanywhere.com
+#
+#  IMPORTANT: Set debug=False in production.
+# ═══════════════════════════════════════════════════════════════
+
 from flask import Flask, render_template_string, request, redirect, url_for
 
 app = Flask(__name__)
@@ -124,4 +162,4 @@ def about():
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5001, use_reloader=False)
+    app.run()

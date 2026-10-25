@@ -4,8 +4,14 @@ from shutil import move
 
 folderPath = 'TestFile'
 
+if not os.path.exists(folderPath):
+    os.makedirs(folderPath)
+    print(f"Created source folder '{folderPath}/'")
+
+LOG_FILE = 'log.txt'
+
 logging.basicConfig(
-    filename=os.path.join(folderPath, 'log.txt'),
+    filename=os.path.join(folderPath, LOG_FILE),
     level=logging.INFO,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
@@ -23,6 +29,9 @@ folder = {
 files = os.listdir(folderPath)
 
 for file in files:
+    if file == LOG_FILE:
+        continue
+
     name, extension = os.path.splitext(file)
     if extension in folder:
         folderName = folder[extension]

@@ -1,5 +1,27 @@
 import numpy as np
 
+print("=" * 65)
+print("  WHY USE A STRUCTURED ARRAY FOR EMPLOYEE RECORDS?")
+print("=" * 65)
+print("""
+Employee records contain fields of different data types:
+  - EmployeeID  → integer
+  - Name        → string (Unicode)
+  - Department  → string (Unicode)
+  - Salary      → float
+  - Performance → integer
+
+A regular NumPy array can store only ONE data type.  A structured
+array defines named fields, each with its own dtype, so that
+heterogeneous data (IDs, names, salaries) coexist in one record.
+
+Benefits:
+  1. Fields are accessed by name  →  employees["Salary"]
+  2. Vectorised NumPy operations  →  fast mean, sort, filter
+  3. Memory-efficient contiguous storage (like a C struct)
+""")
+print("=" * 65)
+
 employee_dtype = [
     ("EmployeeID", "i4"),
     ("Name", "U20"),

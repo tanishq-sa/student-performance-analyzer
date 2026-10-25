@@ -47,6 +47,10 @@ df["Result"] = df[subjects].apply(lambda row: "PASS" if all(row >= 40) else "FAI
 print("\n--- Results ---")
 print(df[["Student", "Total", "Average", "Result"]])
 
+df_sorted = df.sort_values(by="Average", ascending=False)
+print("\n--- Students Sorted by Average (Descending) ---")
+print(df_sorted[["Student", "Average", "Result"]].to_string(index=False))
+
 fig, axes = plt.subplots(2, 3, figsize=(18, 12))
 
 axes[0, 0].bar(df["Student"], df["Average"], color="steelblue")

@@ -30,7 +30,14 @@ print(f"Created students.csv with {len(df)} records")
 print(df.to_string(index=False))
 
 print("\n" + "=" * 50)
-print("--- Step 2: Students with Attendance Below 85% ---")
+print("--- Step 2: Loading students.csv using pd.read_csv ---")
+
+df = pd.read_csv("students.csv")
+print(f"\nLoaded {len(df)} records from students.csv")
+print(df.head())
+
+print("\n" + "=" * 50)
+print("--- Step 3: Students with Attendance Below 85% ---")
 
 low_attendance_df = df[df["Attendance"] < 85]
 
@@ -41,7 +48,7 @@ low_attendance_df.to_csv("students_low_attendance.csv", index=False)
 print("\nSaved to students_low_attendance.csv")
 
 print("\n" + "=" * 50)
-print("--- Step 3: Bonus Marks for Attendance > 85% ---")
+print("--- Step 4: Bonus Marks for Attendance > 85% ---")
 
 def add_bonus_marks(row):
     if row["Attendance"] > 85:
@@ -57,7 +64,7 @@ df.to_csv("students_bonus.csv", index=False)
 print("\nSaved to students_bonus.csv")
 
 print("\n" + "=" * 50)
-print("--- Step 4: Students Above Average Marks ---")
+print("--- Step 5: Students Above Average Marks ---")
 
 average_marks = df["Marks"].mean()
 print(f"\nAverage Marks: {average_marks:.2f}")

@@ -16,6 +16,17 @@ if response.status_code == 200:
         print(f"Company: {user['company']['name']}")
         print("-" * 40)
 
+    demo_city = "Gwenborough"
+    print(f"\n--- Demo: Searching for city '{demo_city}' ---")
+    demo_found = False
+    for user in users:
+        if user['address']['city'].lower() == demo_city.lower():
+            print(f"  Name: {user['name']}")
+            print(f"  Email: {user['email']}")
+            demo_found = True
+    if not demo_found:
+        print(f"  No user found in '{demo_city}'.")
+
     print()
     search = input("Enter City Name to Search: ")
     found = False
