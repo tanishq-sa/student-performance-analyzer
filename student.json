@@ -1,0 +1,24 @@
+{
+    "studentId": "STU10293",
+    "firstName": "Alex",
+    "lastName": "Rivera",
+    "age": 20,
+    "isEnrolled": true,
+    "gpa": 3.85,
+    "contact": {
+        "email": "alex.rivera@university.edu",
+        "phone": "+1-555-0198"
+    },
+    "address": {
+        "street": "456 University Ave",
+        "city": "Boston",
+        "state": "MA",
+        "zipCode": "02115"
+    },
+    "courses": [
+        "Introduction to Computer Science",
+        "Calculus II",
+        "Data Structures",
+        "Technical Writing"
+    ]
+}

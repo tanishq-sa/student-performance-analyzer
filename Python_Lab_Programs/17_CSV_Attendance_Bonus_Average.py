@@ -1,27 +1,26 @@
 import pandas as pd
-import random
-
-print("=" * 50)
-print("  CSV Operations - Attendance, Bonus & Average")
-print("=" * 50)
 
 print("\n--- Step 1: Creating students.csv with 30 records ---")
 
-names = [
-    "Amit", "Tanishq", "Nishita", "Rahul", "Priya",
-    "Sneha", "Ashish", "Riya", "Karan", "Meera",
-    "Rohan", "Anita", "Vikram", "Pooja", "Arjun",
-    "Deepa", "Suresh", "Kavita", "Manish", "Neha",
-    "Rajesh", "Sunita", "Arun", "Divya", "Pankaj",
-    "Swati", "Nikhil", "Rekha", "Sanjay", "Anjali"
-]
-
-random.seed(42)
-
 data = {
-    "Student": names,
-    "Marks": [random.randint(35, 100) for _ in range(30)],
-    "Attendance": [random.randint(60, 100) for _ in range(30)],
+    "Student": [
+        "Amit", "Tanishq", "Nishita", "Rahul", "Priya",
+        "Sneha", "Ashish", "Riya", "Karan", "Meera",
+        "Rohan", "Anita", "Vikram", "Pooja", "Arjun",
+        "Deepa", "Suresh", "Kavita", "Manish", "Neha",
+        "Rajesh", "Sunita", "Arun", "Divya", "Pankaj",
+        "Swati", "Nikhil", "Rekha", "Sanjay", "Anjali"
+    ],
+    "Marks": [
+        78, 95, 88, 45, 92, 67, 55, 83, 70, 60,
+        72, 85, 48, 90, 65, 80, 58, 87, 62, 91,
+        53, 76, 69, 84, 47, 93, 71, 79, 56, 89
+    ],
+    "Attendance": [
+        91, 96, 78, 65, 88, 82, 70, 93, 85, 76,
+        89, 94, 68, 90, 84, 87, 73, 92, 79, 95,
+        66, 86, 81, 90, 64, 97, 83, 88, 72, 94
+    ],
 }
 
 df = pd.DataFrame(data)
@@ -78,7 +77,3 @@ print("  1. students.csv           - Original 30 student records")
 print("  2. students_low_attendance.csv - Students with attendance < 85%")
 print("  3. students_bonus.csv     - All students with Bonus_Marks column")
 print("  4. average_marks.csv      - Students scoring above average marks")
-
-print("\n" + "=" * 50)
-print("  Demo Complete")
-print("=" * 50)

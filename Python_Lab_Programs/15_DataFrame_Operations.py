@@ -1,10 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-print("=" * 50)
-print("  DataFrame Operations - Calculations & Sorting")
-print("=" * 50)
-
 data = {
     "Student": ["Amit", "Tanishq", "Nishita", "Rahul", "Priya", "Sneha", "Ashish", "Riya", "Karan", "Meera"],
     "Math": [78, 95, 88, 45, 92, 67, 55, 83, 70, 60],
@@ -95,9 +91,3 @@ axes[1, 2].set_title("Pass/Fail Distribution")
 plt.tight_layout()
 plt.savefig("statistical_analysis_visualizations.png")
 plt.show()
-
-print("\nVisualizations saved as statistical_analysis_visualizations.png")
-
-print("\n" + "=" * 50)
-print("  Demo Complete")
-print("=" * 50)

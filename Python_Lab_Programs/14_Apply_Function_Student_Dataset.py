@@ -1,9 +1,5 @@
 import pandas as pd
 
-print("=" * 50)
-print("  Demonstrate apply() Function on Student Dataset")
-print("=" * 50)
-
 data = {
     "Student": ["Amit", "Tanishq", "Nishita", "Rahul", "Priya", "Sneha", "Ashish", "Riya"],
     "Math": [78, 95, 88, 45, 92, 67, 55, 83],
@@ -111,7 +107,3 @@ print(toppers)
 
 print("\n--- Final Dataset ---")
 print(df)
-
-print("\n" + "=" * 50)
-print("  Demo Complete")
-print("=" * 50)

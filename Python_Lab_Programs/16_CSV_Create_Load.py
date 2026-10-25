@@ -1,10 +1,6 @@
 import csv
 import os
 
-print("=" * 50)
-print("  CSV File Operations")
-print("=" * 50)
-
 print("\n--- Creating CSV File ---")
 
 header = ["Name", "Age", "Course", "Marks", "Email"]
@@ -74,7 +70,3 @@ for record in data:
 
 if os.path.exists("students.csv"):
     os.remove("students.csv")
-
-print("\n" + "=" * 50)
-print("  Demo Complete")
-print("=" * 50)
